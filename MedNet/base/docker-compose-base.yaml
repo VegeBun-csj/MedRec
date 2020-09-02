@@ -1,0 +1,85 @@
+# Copyright IBM Corp. All Rights Reserved.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+version: '2'
+
+services:
+
+  orderer.medrec.com:
+    container_name: orderer.medrec.com
+    extends:
+      file: peer-base.yaml
+      service: orderer-base
+    volumes:
+        - ../channel-artifacts/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+        - ../crypto-config/ordererOrganizations/medrec.com/orderers/orderer.medrec.com/msp:/var/hyperledger/orderer/msp
+        - ../crypto-config/ordererOrganizations/medrec.com/orderers/orderer.medrec.com/tls/:/var/hyperledger/orderer/tls
+    ports:
+      - 7050:7050
+
+  peer0.org1.medrec.com:
+    container_name: peer0.org1.medrec.com
+    extends:
+      file: peer-base.yaml
+      service: peer-base
+    environment:
+      - CORE_PEER_ID=peer0.org1.medrec.com
+      - CORE_PEER_ADDRESS=peer0.org1.medrec.com:7051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:7051
+      - CORE_PEER_CHAINCODEADDRESS=peer0.org1.medrec.com:7052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7052
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.org1.medrec.com:7051
+      - CORE_PEER_LOCALMSPID=Org1MSP
+    volumes:
+        - /var/run/:/host/var/run/
+        - ../crypto-config/peerOrganizations/org1.medrec.com/peers/peer0.org1.medrec.com/msp:/etc/hyperledger/fabric/msp
+        - ../crypto-config/peerOrganizations/org1.medrec.com/peers/peer0.org1.medrec.com/tls:/etc/hyperledger/fabric/tls
+       
+    ports:
+      - 7051:7051
+
+
+  peer0.org2.medrec.com:
+    container_name: peer0.org2.medrec.com
+    extends:
+      file: peer-base.yaml
+      service: peer-base
+    environment:
+      - CORE_PEER_ID=peer0.org2.medrec.com
+      - CORE_PEER_ADDRESS=peer0.org2.medrec.com:8051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:8051
+      - CORE_PEER_CHAINCODEADDRESS=peer0.org2.medrec.com:8052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:8052
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.org2.medrec.com:8051
+      - CORE_PEER_LOCALMSPID=Org2MSP
+    volumes:
+        - /var/run/:/host/var/run/
+        - ../crypto-config/peerOrganizations/org2.medrec.com/peers/peer0.org2.medrec.com/msp:/etc/hyperledger/fabric/msp
+        - ../crypto-config/peerOrganizations/org2.medrec.com/peers/peer0.org2.medrec.com/tls:/etc/hyperledger/fabric/tls
+       
+    ports:
+      - 8051:8051
+
+  peer0.org3.medrec.com:
+    container_name: peer0.org3.medrec.com
+    extends: 
+      file: peer-base.yaml
+      service: peer-base
+    environment: 
+      - CORE_PEER_ID=peer0.org3.medrec.com
+      - CORE_PEER_ADDRESS=peer0.org3.medrec.com:9051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:9051
+      - CORE_PEER_CHAINCODEADDRESS=peer0.org3.medrec.com:9052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:9052
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.org3.medrec.com:9051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.org3.medrec.com:9051
+      - CORE_PEER_LOCALMSPID=Org3MSP
+    volumes: 
+        - /var/run/:/host/var/run/
+        - ../crypto-config/peerOrganizations/org3.medrec.com/peers/peer0.org3.medrec.com/msp:/etc/hyperledger/fabric/msp
+        - ../crypto-config/peerOrganizations/org3.medrec.com/peers/peer0.org3.medrec.com/tls:/etc/hyperledger/fabric/tls
+       
+    ports: 
+      - 9051:9051
