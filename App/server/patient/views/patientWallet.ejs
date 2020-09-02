@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="/patient/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="/patient/richText/bootstrap-combined.no-icons.min.css">
+        <link rel="stylesheet" href="/patient/richText/index.css" type="text/css"> </link>
+        
+        <link rel="stylesheet" type="text/css" href="/patient/css/bootstrap-responsive.min.css"/>
+        
+        <link rel="stylesheet" type="text/css"  href="/patient/css/font-awesome.min.css"/>
+        <link rel="stylesheet" type="text/css" href="/patient/css/ace.min.css"/>
+        
+        <link rel="stylesheet" type="text/css" href="/patient/css/ace-skins.min.css"/>
+        <link rel="stylesheet" type="text/css" href="/patient/css/ace-responsive.min.css" />
+        <script src="/patient/jquery.min.js"></script>
+        <script src="/patient/js/bootstrap.min.js"></script>
+        <script src="/patient/js/bootbox.min.js"></script>
+        <script src="/patient/richText/bootstrap-wysiwyg.js" type="text/javascript"></script>
+        <script src="/patient/richText/jquery.hotkeys.js" type="text/javascript"></script>
+        <link rel="stylesheet" type="text/css" href="/patient/webuploader/webuploader.css" />
+        <style type="text/css">
+           body,html{
+                width: 100%;
+                height: 100%;
+                background: #fff;
+            }
+            #sidebar{
+        left: 0;
+        margin-top: 0;
+    }
+ 
+    .blue{
+        color:blue;
+    }
+            .goods-header{
+                overflow: hidden;
+            }
+            .goods-header-left{
+                width: 30%;
+                float: left;
+            }
+            .goods-header-right{
+                width: 70%;
+                float: left;
+            }
+            .goods-header-left img{
+                width: 100%;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="navbar navbar-inverse">
+            <div class="navbar-inner" style="background:#0099CC;">
+                <div class="container-fluid">
+                    <a class="brand">
+                        <small><i class="icon-leaf"></i> 医疗信息系统-病人端</small>
+                    </a>
+        
+                    <ul class="nav ace-nav pull-right">
+        
+                        <li class="light-blue user-profile">
+                            <a class="user-menu dropdown-toggle" href="javascript:;" data-toggle="dropdown">
+                                <img alt="LRJ" src="/patient/image/avatar.jpg" class="nav-user-photo">
+                                <span id="user_info"><small>Welcome</small> 贾雪磊</span>
+                                <i class="icon-caret-down"></i>
+                            </a>
+                            <ul id="user_menu" class="pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-closer">
+        
+        
+                                <li><a href="/logout"><i class="icon-off"></i> 退出</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="sidebar">
+            <div id="sidebar-shortcuts">
+        
+                <div id="sidebar-shortcuts-large">
+        
+                    <button class="btn btn-small btn-success"><i class="icon-signal"></i></button>
+        
+                    <button class="btn btn-small btn-info"><i class="icon-pencil"></i></button>
+        
+                    <button class="btn btn-small btn-warning"><i class="icon-group"></i></button>
+        
+                    <button class="btn btn-small btn-danger"><i class="icon-cogs"></i></button>
+        
+                </div>
+        
+                <div id="sidebar-shortcuts-mini">
+        
+                    <span class="btn btn-success"></span>
+        
+                    <span class="btn btn-info"></span>
+        
+                    <span class="btn btn-warning"></span>
+        
+                    <span class="btn btn-danger"></span>
+        
+                </div>
+        
+            </div><!-- #sidebar-shortcuts -->
+        
+        
+        
+            <ul class="nav nav-list">
+        
+        
+                <li>
+        
+                    <a href="/patient/myDetail?pid=<%=pid%>&hid=<%=hid%>" >
+        
+                        <i class="icon-picture"></i>
+        
+                        <span>我的信息</span>
+        
+                    </a>
+        
+                </li>
+        
+        
+                <li>
+        
+                    <a href="/patient/selectKeshi?pid=<%=pid%>&hid=<%=hid%>">
+        
+                        <i class="icon-th"></i>
+        
+                        <span>问诊</span>
+        
+                    </a>
+        
+                </li>
+        
+                <li>
+        
+                    <a href="/patient/giveAuthority?pid=<%=pid%>&hid=<%=hid%>" >
+        
+                        <i class="icon-th"></i>
+        
+                        <span>链上就诊信息</span>
+        
+                    </a>
+        
+                </li>
+                <li>
+                    <a href="/patient/yaofang?pid=<%=pid%>&hid=<%=hid%>" >
+        
+                        <i class="icon-th"></i>
+        
+                        <span>药房</span>
+        
+                    </a>
+        
+                </li>
+                <li>
+                    <a href="/patient/wishList?pid=<%=pid%>&hid=<%=hid%>" >
+        
+                        <i class="icon-th"></i>
+        
+                        <span>收藏</span>
+        
+                    </a>
+        
+                </li>
+                <li>
+                    <a href="/patient/myOrders?pid=<%=pid%>&hid=<%=hid%>" >
+        
+                        <i class="icon-th"></i>
+        
+                        <span>我的订单</span>
+        
+                    </a>
+                </li>
+                <li>
+                    <a href="/patient/mybinli?pid=<%=pid%>&hid=<%=hid%>" >
+        
+                        <i class="icon-th"></i>
+        
+                        <span>我的病历</span>
+        
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="/patient/myWallet?pid=<%=pid%>&hid=<%=hid%>" >
+        
+                        <i class="icon-th"></i>
+        
+                        <span>钱包</span>
+        
+                    </a>
+                </li>
+        
+        
+        
+        
+            </ul><!--/.nav-list-->
+        
+        
+        
+            <div id="sidebar-collapse"><i class="icon-double-angle-left"></i></div>
+        </div>
+    <div id="main-content" class="clearfix">
+        <div id="page-content" class="clearfix">
+            <div class="page-header position-relative">
+                <h1 style="color: #2679b5;">病人端<small><i class="icon-double-angle-right"></i> 钱包账号注册</small></h1>
+            </div>
+            <div class="Register">
+               
+                <input type="hidden" name="pid" id="pid" value="<%=pid%>" >
+                <div><label class="green">Account Name:</label><input type="text" name="p_wallet_name" id="p_wallet_name"></div>
+                <div><label class="green">Password:</label><input type="password" name="password" id="password" ></div>
+                <button class="btn  btn-success save" onclick="gotoWallet()">Sign Up</button>
+               
+            </div>
+
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+
+    function gotoWallet(){
+        alert('dianle')
+        var pid = $('input[name="pid"]').val();
+        var p_wallet_name = $('input[name=p_wallet_name]').val();
+        var password = $('input[name=password]').val();
+        alert(pid);
+
+        $.ajax({
+            type: 'post',
+            contentType: 'application/json;charset=utf-8',
+            url: "registerWallet",
+            data:'{"password":"'+password+'","p_wallet_name":"'+p_wallet_name+'","pid":"'+pid+'"}',
+            success: function (result) {
+                if (result.code === '200') {
+
+                   bootbox.alert("申请钱包成功！");
+                   window.location.href = ""
+                }else{
+                    bootbox.alert("申请钱包失败！");                }
+
+            }
+
+
+
+        });
+
+
+
+
+        // window.location.href = "bvo-gmcwallermoney.html"
+    }
+
+    </script>
+    </body>
+</html>

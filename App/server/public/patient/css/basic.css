@@ -1,0 +1,54 @@
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.none {
+    display: none;
+}
+
+#header {
+    background-color: #333333;
+    height: 70px;
+    width: 100%;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
+}
+
+#header .centre {
+    height: 70px;
+    width: 1263px;
+    margin: 0;
+}
+
+#header .logo {
+    width: 240px;
+    height: 70px;
+    text-indent: -500px;
+    float: left;
+}
+
+#header .link {
+    height: 70px;
+    line-height: 70px;
+    float: right;
+    width: 650px;
+}
+
+#header .link li {
+    float: left;
+    width: 120px;
+    text-align: center;
+}
+
+#header .link a {
+    margin-top: 20px;
+    margin-left: 10px;
+    color: #eeeeee;
+    display: block;
+   height: 60px;
+    font-size: 20px;
+}
+

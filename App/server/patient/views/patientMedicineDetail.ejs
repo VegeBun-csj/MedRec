@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="/patient/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="/patient/richText/bootstrap-combined.no-icons.min.css">
+        <link rel="stylesheet" href="/patient/richText/index.css" type="text/css"> </link>
+        
+        <link rel="stylesheet" type="text/css" href="/patient/css/bootstrap-responsive.min.css"/>
+        
+        <link rel="stylesheet" type="text/css"  href="/patient/css/font-awesome.min.css"/>
+        <link rel="stylesheet" type="text/css" href="/patient/css/ace.min.css"/>
+        
+        <link rel="stylesheet" type="text/css" href="/patient/css/ace-skins.min.css"/>
+        <link rel="stylesheet" type="text/css" href="/patient/css/ace-responsive.min.css" />
+        <link rel="stylesheet" type="text/css" href="/patient/webuploader/webuploader.css" />
+        <style type="text/css">
+           body,html{
+                width: 100%;
+                height: 100%;
+                background: #fff;
+            }
+            #sidebar{
+        left: 0;
+        margin-top: 0;
+    }
+ 
+    .blue{
+        color:blue;
+    }
+            .goods-header{
+                overflow: hidden;
+            }
+            .goods-header-left{
+                width: 30%;
+                float: left;
+            }
+            .goods-header-right{
+                width: 70%;
+                float: left;
+            }
+            .goods-header-left img{
+                width: 100%;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="navbar navbar-inverse">
+            <div class="navbar-inner" style="background:#0099CC;">
+                <div class="container-fluid">
+                    <a class="brand">
+                        <small><i class="icon-leaf"></i> 医疗信息系统-病人端</small>
+                    </a>
+        
+                    <ul class="nav ace-nav pull-right">
+        
+                        <li class="light-blue user-profile">
+                            <a class="user-menu dropdown-toggle" href="javascript:;" data-toggle="dropdown">
+                                <img alt="LRJ" src="/patient/image/avatar.jpg" class="nav-user-photo">
+                                <span id="user_info"><small>Welcome</small> 贾雪磊</span>
+                                <i class="icon-caret-down"></i>
+                            </a>
+                            <ul id="user_menu" class="pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-closer">
+        
+        
+                                <li><a href="/logout"><i class="icon-off"></i> 退出</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="sidebar">
+            <div id="sidebar-shortcuts">
+        
+                <div id="sidebar-shortcuts-large">
+        
+                    <button class="btn btn-small btn-success"><i class="icon-signal"></i></button>
+        
+                    <button class="btn btn-small btn-info"><i class="icon-pencil"></i></button>
+        
+                    <button class="btn btn-small btn-warning"><i class="icon-group"></i></button>
+        
+                    <button class="btn btn-small btn-danger"><i class="icon-cogs"></i></button>
+        
+                </div>
+        
+                <div id="sidebar-shortcuts-mini">
+        
+                    <span class="btn btn-success"></span>
+        
+                    <span class="btn btn-info"></span>
+        
+                    <span class="btn btn-warning"></span>
+        
+                    <span class="btn btn-danger"></span>
+        
+                </div>
+        
+            </div><!-- #sidebar-shortcuts -->
+        
+        
+        
+            <ul class="nav nav-list">
+        
+        
+                <li>
+        
+                    <a href="/patient/myDetail?pid=<%=pid%>&hid=<%=hid%>" >
+        
+                        <i class="icon-picture"></i>
+        
+                        <span>我的信息</span>
+        
+                    </a>
+        
+                </li>
+        
+        
+                <li>
+        
+                    <a href="/patient/selectKeshi?pid=<%=pid%>&hid=<%=hid%>">
+        
+                        <i class="icon-th"></i>
+        
+                        <span>问诊</span>
+        
+                    </a>
+        
+                </li>
+        
+                <li>
+        
+                    <a href="/patient/giveAuthority?pid=<%=pid%>&hid=<%=hid%>" >
+        
+                        <i class="icon-th"></i>
+        
+                        <span>链上就诊信息</span>
+        
+                    </a>
+        
+                </li>
+                <li class="active">
+                    <a href="/patient/yaofang?pid=<%=pid%>&hid=<%=hid%>" >
+        
+                        <i class="icon-th"></i>
+        
+                        <span>药房</span>
+        
+                    </a>
+        
+                </li>
+                <li>
+                    <a href="/patient/wishList?pid=<%=pid%>&hid=<%=hid%>" >
+        
+                        <i class="icon-th"></i>
+        
+                        <span>收藏</span>
+        
+                    </a>
+        
+                </li>
+                <li>
+                    <a href="/patient/myOrders?pid=<%=pid%>&hid=<%=hid%>" >
+        
+                        <i class="icon-th"></i>
+        
+                        <span>我的订单</span>
+        
+                    </a>
+                </li>
+                <li>
+                    <a href="/patient/mybinli?pid=<%=pid%>&hid=<%=hid%>" >
+        
+                        <i class="icon-th"></i>
+        
+                        <span>我的病历</span>
+        
+                    </a>
+                </li>
+                <li>
+                    <a href="/patient/myWallet?pid=<%=pid%>&hid=<%=hid%>" >
+        
+                        <i class="icon-th"></i>
+        
+                        <span>钱包</span>
+        
+                    </a>
+                </li>
+        
+        
+        
+        
+            </ul><!--/.nav-list-->
+        
+        
+        
+            <div id="sidebar-collapse"><i class="icon-double-angle-left"></i></div>
+        </div>
+        <div id="main-content" class="clearfix">
+            <div id="page-content" class="clearfix">
+
+            <div class="goods-header">
+                <div class="goods-header-left"><img src="/medicinePIc/<%=medicine.m_picture%>" style="width: 400px;height: 400px;" alt=""  /></div>
+                <div class="goods-header-right" style="margin-top: 100px;">
+                    <p style="font-size: 20px;"><b>药品名： <%=medicine.m_name%></b></p>
+                    <p>适用症状: <%=medicine.m_type%></p>
+                    <p class="red">价格: <%=medicine.m_price%></p>
+                    <p>库存:<%=medicine.m_num%></p>
+                
+                    <input type="hidden" name="pid" value="<%=pid%>">
+                    <input type="hidden" name="hid" value="<%=medicine.hid%>">
+                    <input type="hidden" name="mid" value="<%=medicine.mid%>">
+                    <input type="hidden" name="m_price" value="<%=medicine.m_price%>">
+                    <input type="hidden" name="m_num" value="<%=medicine.m_num%>">
+
+                    购买数量:<input type="number" name="order_count" id="order_count">
+                    <button class="btn btn-primary" onclick="xiadan()">下单</button>
+                    <button class="btn btn-primary" onclick="addWish()">加入心愿单</button>
+                </div>
+            </div>
+
+                <h4 class="lighter">Item Description</h4>
+                <div class="tabbable">
+                    <ul class="nav nav-tabs" id="myTab">
+                        <li class="active"><a data-toggle="tab" href="#xiangxi">详细描述</a></li>
+                        <li class=""><a data-toggle="tab" href="#tupian">图片展示</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="xiangxi" class="tab-pane active">
+                            <table class="table table-striped">
+                                <tr><th>商品名称 : </th><td><%=medicine.m_name%></td></tr>
+                                <tr class='colorWhite'><th>成份 : </th><td><%=medicine.m_chengfen%></td></tr>
+        
+                                <tr class='colorWhite'><th>功能主治 : </th><td><%=medicine.m_gongneng%></td></tr>
+                                    <tr><th>规格 : </th><td><%=medicine.m_guige%></td></tr>
+                                    <tr class='colorWhite'><th>用法用量 : </th><td><%=medicine.m_yongfa%></td></tr>
+                                    <tr><th>不良反应 : </th><td><%=medicine.m_buliangfanying%></td></tr>
+                    
+                                    <tr><th>有效期 : </th><td><%=medicine.m_youxiaoqi%></td></tr>
+                                    <tr class='colorWhite'><th>批准文号 : </th><td><%=medicine.m_wenhao%></td></tr>
+                                    <tr><th>企业名称 : </th><td><%=medicine.m_producerName%></td></tr>
+                                    <tr><th>企业地址 : </th><td><%=medicine.m_producerAddress%><br/></td></tr>
+                                    <tr class='colorWhite'><td colspan='2' style='text-align:center'>*如有问题可与生产企业联系</td></tr>
+                              </table>
+                        </div>
+                        <div id="tupian" class="tab-pane">
+                            Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <script src="/patient/jquery.min.js"></script>
+        <script src="/patient/webuploader/webuploader.js"></script>
+        <script src="/patient/js/bootstrap.min.js"></script>
+        <script src="/patient/js/bootbox.min.js"></script>
+
+        <script type="text/javascript">
+
+
+            function xiadan() {
+
+                var order_count = parseInt($('input[name=order_count]').val());
+ 
+               var m_num = parseInt($('input[name=m_num]').val());
+               alert(m_num);
+                if(order_count>m_num)
+                {
+                   bootbox.alert("库存不足!")
+                }
+                else{
+
+                  
+                    var pid = parseInt($('input[name = "pid"]').val())
+                    var hid =parseInt( $('input[name = "hid"]').val());
+                    var mid = parseInt($('input[name = "mid"]').val());
+                  
+                    var m_price =parseFloat($('input[name = "m_price"]').val());  
+                    var order_price = m_price*order_count;
+                
+                    $.ajax({
+
+                        type:'post',
+                        contentType:'application/json;charset=utf-8',
+                        url:'xiadan',
+                        data:'{ "m_num":"'+m_num+'","order_count":"'+order_count+'","order_price":"'+order_price+'","hid":"'+hid+'","pid":"'+pid+'","mid":"'+mid+'"}',
+                        success: function (result) {
+                             if (result.code === '200') {
+
+                               bootbox.alert("下单成功");
+                               setTimeout(function () {
+                                window.location.reload();
+                                 }, 2000);
+                                 
+                             }else{
+                                 bootbox.alert('下单失败');                }
+                                 setTimeout(function () {
+                                 window.location.reload();
+                                 }, 2000);
+
+                        }
+                    })
+                }
+            }
+
+
+    function addWish() {
+
+
+        var pid = parseInt($('input[name=pid]').val());
+
+        var mid = parseInt($('input[name=mid]').val());
+
+        $.ajax({
+            type: 'post',
+            contentType: 'application/json;charset=utf-8',
+            url: "addToWish",
+            data:'{ "pid":"'+pid+'","mid":"'+mid+'"}',
+            success: function (result) {
+                if (result.code === '200') {
+
+                   bootbox.alert("加入心愿单成功");
+                }else{
+                    bootbox.alert("收藏中已有");                }
+
+            }
+
+        })
+
+
+
+
+    }
+
+        </script>
+    </body>
+
+
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <!-- <meta content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=no" name="viewport" />
+    <meta content="Semantic-UI-Forest, collection of design, themes and templates for Semantic-UI." name="description" />
+    <meta content="Semantic-UI, Theme, Design, Template" name="keywords" />
+    <meta content="PPType" name="author" />
+    <meta content="#ffffff" name="theme-color" />
+     --><title>Hospital XYZ</title>
+    <link rel="stylesheet" type="text/css" href="/hosp/semantic.min.css" />
+    <link rel="stylesheet" type="text/css" href="/hosp/default.css" />
+    <link rel="stylesheet" type="text/css" href="/hosp/pandoc-code-highlight.css" />
+    
+    <!-- <link rel="stylesheet" type="text/css" href="style_02.css"> -->
+    <script src="/hosp/jquery.min.js"></script>
+</head>
+
+
+<body>
+
+<!-- <div class="ui horizontal divider">or</div> -->
+
+<div class="ui container">
+
+    <form class="ui form segment" action="/laboratories" method="POST">
+
+        <h1>请根据体检情况对病人进行诊断：</h1>
+
+
+        <div class="three fields">
+
+            <div class="field">
+                <label>身高/cm</label>
+                <input value="<%=datas[0].shengao%>" readonly="readonly" type="text">
+            </div>
+
+            <div class="field">
+                <label>体重/kg</label>
+                <input value="<%=datas[0].tizhong%>" readonly="readonly" type="text">
+            </div>
+        </div>
+
+        <div class="three fields">
+            <div class="field">
+                <label>血压（舒张压）</label>
+                <input value="<%=datas[0].shuzhangya%>" readonly="readonly" type="text">
+            </div>
+
+            <div class="field">
+                <label>血压（收缩压）</label>
+                <input value="<%=datas[0].shousuoya%>" readonly="readonly" type="text">
+            </div>
+
+            <div class="field">
+                <label>心跳次数/分钟</label>
+                <input value="<%=datas[0].xintiao%>" readonly="readonly" type="text">
+            </div>
+        </div>
+
+        <div class="two fields">
+            <div class="field">
+                <label>血常规</label>
+                <textarea placeholder="<%=datas[0].xuejian%>" readonly="readonly" type="text"></textarea>
+            </div>
+        </div>
+
+        <caption> <strong> 内科检查 </strong></caption>
+        <div class="two fields">
+            <div class="field">
+                <label>内科情况</label>
+                <textarea placeholder="<%=datas[0].neike%>" readonly="readonly" type="text"></textarea>
+            </div>
+        </div>
+
+        <caption> <strong> 外科检查 </strong></caption>
+        <div class="two fields">
+            <div class="field">
+                <label>外科情况</label>
+                <textarea placeholder="<%=datas[0].waike%>" readonly="readonly" type="text"></textarea>
+            </div>
+        </div>
+
+        <caption> <strong> 医生诊断 </strong></caption>
+        <div class="two fields">
+            <div class="field">
+                <label>当前医嘱</label>
+                <textarea placeholder="<%=datas[0].diagnosis%>" readonly="readonly" type="text"></textarea>
+            </div>
+            <div class="field">
+                <label>更新医嘱</label>
+                <textarea value="<%=datas[0].diagnosis%>" name="diagnosis" type="text"></textarea>
+            </div>
+        </div>
+
+
+        <div class="two fields">
+            <div class="field">
+                <label>是否要求重新体检</label>
+                <select class="ui dropdown" name="tijian">
+                    <option value="1">需要</option>
+                    <option value="2">不需要</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="two fields">
+            <div class="field">
+                <label>是否下达住院通知？</label>
+                <select class="ui dropdown" name="zhuyuan">
+                    <option value="1">是</option>
+                    <option value="2">否</option>
+                </select>
+            </div>
+        </div>
+
+
+        <button class="ui primary submit button">完成诊断</button>
+        <div class="ui error message"></div>
+    </form>
+
+    <div> <a href="/profile">返回首页</a> </div>
+
+</div>
+
+
+<script src="/hosp/semantic.min.js"></script>
+
+<script>
+    $('.ui.form')
+        .form({
+            fields: {
+                name       : 'empty',
+                gender     : 'empty',
+                age        : 'empty',
+                contact    : 'empty',
+                address    : 'empty',
+                supervisor : 'empty',
+                ward       : 'empty'
+                /*speciality : 'empty'*/
+                /*username : 'empty',
+                password : ['minLength[6]', 'empty'],
+                speciality   : ['minCount[2]', 'empty'],
+                terms    : 'checked'*/
+            }
+        })
+    ;
+</script>
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    --><title>医生工作站</title>
+    <link rel="stylesheet" type="text/css" href="/hosp/semantic.min.css" />
+    <link rel="stylesheet" type="text/css" href="/hosp/default.css" />
+    <link rel="stylesheet" type="text/css" href="/hosp/pandoc-code-highlight.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="style_02.css"> -->
+    <script src="/hosp/jquery.min.js"></script>
+</head>
+
+
+<body>
+
+<!-- <div class="ui horizontal divider">or</div> -->
+<div class="ui container">
+    <h1> 住院医生工作站： </h1>
+    <form class="ui form segment" action="/newPatient" method="post">
+        <h3><%=test %></h3>
+        <div> <a href="/profile">返回首页</a> </div>
+        <table><tr style='background-color:#006633'>
+                <th width="150" style="color:#ffff99">病人编号</th>
+                <th width="150" style="color:#ffff99">病人姓名</th>
+                <th width="150" style="color:#ffff99">住院医嘱</th>
+            <% if (patient) { %>
+            <% patient.forEach(function(user){ %>
+            <tr>
+                <th width="150"><%= user.id %></th>
+                <th width="150"><%= user.name %></th>
+                <th width="150"><a href="/orders?id=<%= user.id %>">病人医嘱</a></th>
+            </tr>
+            <% }) %>
+            <% } %>
+        </table>
+    </form>
+    </br>
+
+
+    <div> <a href="/profile">Go back</a> </div>
+</div>
+
+
+<script src="/hosp/semantic.min.js"></script>
+
+<script>
+    $('.ui.form')
+        .form({
+            fields: {
+                name       : 'empty',
+                gender     : 'empty',
+                age        : 'empty',
+                contact    : 'empty',
+                address    : 'empty',
+                registar   : 'empty',
+                ward       : 'empty',
+                speciality : 'empty'
+                /*username : 'empty',
+                password : ['minLength[6]', 'empty'],
+                speciality   : ['minCount[2]', 'empty'],
+                terms    : 'checked'*/
+            }
+        })
+    ;
+</script>
+
+
+</body>
+</html>
+
+
+

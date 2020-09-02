@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    --><title>护士工作站</title>
+    <link rel="stylesheet" type="text/css" href="/hosp/semantic.min.css" />
+    <link rel="stylesheet" type="text/css" href="/hosp/default.css" />
+    <link rel="stylesheet" type="text/css" href="/hosp/pandoc-code-highlight.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="style_02.css"> -->
+    <script src="/hosp/jquery.min.js"></script>
+</head>
+
+
+<body>
+
+<!-- <div class="ui horizontal divider">or</div> -->
+<div class="ui container">
+    <h1> 住院护士工作站： </h1>
+    <form class="ui form segment" action="/newPatient" method="post">
+        <h3><%=test %></h3>
+        <div> <a href="/profile">返回首页</a> </div>
+        <table><tr style='background-color:#006633'>
+                <th width="150" style="color:#ffff99">ID</th>
+                <th width="150" style="color:#ffff99">Update</th>
+                <th width="150" style="color:#ffff99">Username</th>
+                <th width="150" style="color:#ffff99">Usertype</th>
+                <th width="150" style="color:#ffff99">Details</th></tr>
+            <% if (patient) { %>
+            <% patient.forEach(function(user){ %>
+            <tr>
+                <th width="150"><%= user.id %></th>
+                <th width="150"><%= user.name %></th>
+                <th width="150"><a href="/nurorders?id=<%= user.id %>">病人医嘱</a></th>
+                <% if(user.count>0){%>
+                <th width="150">病人有<%= user.count %>条新开医嘱</th>
+                <%}%>
+            </tr>
+            <% }) %>
+            <% } %>
+        </table>
+    </form>
+    </br>
+
+
+    <div> <a href="/profile">Go back</a> </div>
+</div>
+
+
+<script src="/hosp/semantic.min.js"></script>
+
+<script>
+    $('.ui.form')
+        .form({
+            fields: {
+                name       : 'empty',
+                gender     : 'empty',
+                age        : 'empty',
+                contact    : 'empty',
+                address    : 'empty',
+                registar   : 'empty',
+                ward       : 'empty',
+                speciality : 'empty'
+                /*username : 'empty',
+                password : ['minLength[6]', 'empty'],
+                speciality   : ['minCount[2]', 'empty'],
+                terms    : 'checked'*/
+            }
+        })
+    ;
+</script>
+
+
+</body>
+</html>
+
+
+

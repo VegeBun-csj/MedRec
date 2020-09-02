@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <link rel="stylesheet" href="/patient/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/patient/css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="/patient/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/patient/css/ace.min.css">
+    <link rel="stylesheet" href="/patient/css/ace-skins.min.css">
+    <link rel="stylesheet" href="/patient/css/ace-responsive.min.css">
+    
+    <script src="/patient/js/jquery-1.9.1.js"></script>
+    <script src="/patient/js/bootstrap.min.js"></script>
+    <script src="/patient/js/bootbox.min.js"></script>
+  <style>
+    body,html{
+      width: 100%;
+      height: 100%;
+      background: #fff;
+    }
+    #sidebar{
+        left: 0;
+        margin-top: 0;
+    }
+ 
+    .blue{
+        color:blue;
+    }
+    .info div{
+        float: right;
+    }
+
+  </style>
+    <body>
+        <div class="navbar navbar-inverse">
+            <div class="navbar-inner" style="background:#0099CC;">
+                <div class="container-fluid">
+                    <a class="brand">
+                        <small><i class="icon-leaf"></i> 医疗信息系统-病人端</small>
+                    </a>
+        
+                    <ul class="nav ace-nav pull-right">
+        
+                        <li class="light-blue user-profile">
+                            <a class="user-menu dropdown-toggle" href="javascript:;" data-toggle="dropdown">
+                                <img alt="LRJ" src="/patient/image/avatar.jpg" class="nav-user-photo">
+                                <span id="user_info"><small>Welcome</small> 贾雪磊</span>
+                                <i class="icon-caret-down"></i>
+                            </a>
+                            <ul id="user_menu" class="pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-closer">
+        
+        
+                                <li><a href="/logout"><i class="icon-off"></i> 退出</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="sidebar">
+            <div id="sidebar-shortcuts">
+        
+                <div id="sidebar-shortcuts-large">
+        
+                    <button class="btn btn-small btn-success"><i class="icon-signal"></i></button>
+        
+                    <button class="btn btn-small btn-info"><i class="icon-pencil"></i></button>
+        
+                    <button class="btn btn-small btn-warning"><i class="icon-group"></i></button>
+        
+                    <button class="btn btn-small btn-danger"><i class="icon-cogs"></i></button>
+        
+                </div>
+        
+                <div id="sidebar-shortcuts-mini">
+        
+                    <span class="btn btn-success"></span>
+        
+                    <span class="btn btn-info"></span>
+        
+                    <span class="btn btn-warning"></span>
+        
+                    <span class="btn btn-danger"></span>
+        
+                </div>
+        
+            </div><!-- #sidebar-shortcuts -->
+        
+        
+        
+            <ul class="nav nav-list">
+        
+        
+                <li>
+        
+                    <a href="/patient/myDetail?pid=<%=pid%>&hid=<%=hid%>" >
+        
+                        <i class="icon-picture"></i>
+        
+                        <span>我的信息</span>
+        
+                    </a>
+        
+                </li>
+        
+        
+                <li>
+        
+                    <a href="/patient/selectKeshi?pid=<%=pid%>&hid=<%=hid%>">
+        
+                        <i class="icon-th"></i>
+        
+                        <span>问诊</span>
+        
+                    </a>
+        
+                </li>
+        
+                <li>
+        
+                    <a href="/patient/giveAuthority?pid=<%=pid%>&hid=<%=hid%>" >
+        
+                        <i class="icon-th"></i>
+        
+                        <span>链上就诊信息</span>
+        
+                    </a>
+        
+                </li>
+                <li>
+                    <a href="/patient/yaofang?pid=<%=pid%>&hid=<%=hid%>" >
+        
+                        <i class="icon-th"></i>
+        
+                        <span>药房</span>
+        
+                    </a>
+        
+                </li>
+                <li>
+                    <a href="/patient/wishList?pid=<%=pid%>&hid=<%=hid%>" >
+        
+                        <i class="icon-th"></i>
+        
+                        <span>收藏</span>
+        
+                    </a>
+        
+                </li>
+                <li >
+                    <a href="/patient/myOrders?pid=<%=pid%>&hid=<%=hid%>" >
+        
+                        <i class="icon-th"></i>
+        
+                        <span>我的订单</span>
+        
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="/patient/mybinli?pid=<%=pid%>&hid=<%=hid%>" >
+        
+                        <i class="icon-th"></i>
+        
+                        <span>我的病历</span>
+        
+                    </a>
+                </li>
+                <li>
+                    <a href="/patient/myWallet?pid=<%=pid%>&hid=<%=hid%>" >
+        
+                        <i class="icon-th"></i>
+        
+                        <span>钱包</span>
+        
+                    </a>
+                </li>
+        
+        
+        
+        
+        
+            </ul><!--/.nav-list-->
+        
+        
+        
+            <div id="sidebar-collapse"><i class="icon-double-angle-left"></i></div>
+        </div>
+<div id="main-content" class="clearfix">
+<div id="page-content" class="clearfix">
+
+    <div class="page-header position-relative">
+      <h1 style="color: #2679b5;">病人客户端<small><i class="icon-double-angle-right"></i> bingli</small></h1>
+    </div>
+  <!-- <form class="form-search" action="/patient/searchOrders" method="post">
+    Title：
+     <input type="hidden" name="pid" id="pid" value="<%=pid%>">
+    
+     <input type="text" class="input-medium search-query" name="m_name" id="m_name">
+    
+     <button type="submit" class="btn btn-purple btn-small">Search <i class="icon-search icon-on-right"></i></button>
+  </form> -->
+
+<input type="hidden" name="pid" value="<%=pid%>">
+<div class="tabbable">
+    
+      <!-- <div class="tab-content"> -->
+      
+     
+      
+          <p>
+            <table id="table_bug_report" class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                    
+                    <th>病人姓名</th>
+                    <th>就诊医院</th>
+                    <th class="hidden-480">就诊时间</th>
+                    <th>病情描述</th>
+                    <th class="hidden-480">诊断结果</th>
+                    <th class="hidden-480">就诊科室</th>
+                    <th class="hidden-480">所开药品</th>
+                    </tr>
+                  </thead>
+        
+                  <tbody>
+                    <%binli.forEach(function(item){%>
+                       
+                            <tr>
+                    
+                               
+                                <td><%=item.pname%></td>
+                                <td class="hidden-480"><%=item.hname%></td>
+                                <td class="hidden-phone"><%=item.bdate%></td>
+                                <td class="hidden-480"><%=item.description%></td>
+                                <td class="hidden-480"><%=item.symptomName%></td>
+                                <td class="hidden-480"><%=item.officeName%></td>
+                                <td class="hidden-480"><%=item.m_name%></td>
+                
+                              </tr>
+                      
+                      
+                        <%})%>
+                             
+        
+                          </tbody>
+            </table>
+          </p>
+       
+      <!-- </div> -->
+      </div>
+ 
+
+  
+  </div></div>
+
+    <script>
+
+        
+    //   function pay(order_price,hid,oid,mid)
+    //   {
+      
+    //     $('#hid').val(hid);
+    //     // $("#modal_total").html(last_total);
+    //     document.getElementById('modal_total').innerHTML = order_price;
+    //     var pid = $('input[name="pid"]').val();
+    //     $.ajax({
+    //              type: 'post',
+    //              contentType: 'application/json;charset=utf-8',
+    //              url: "checkMoney",
+    //              data:'{  "pid":"' + pid +'"}',
+    //              success: function (result) {
+    //              if (result.code === '200') {
+                    
+                   
+    //                 $("#checkedMoney").html(result.data);
+    //                 //  $("#modal_total").html(last_total);
+    //                 $('#pay_money').val(order_price);
+    //                 $('#oid').val(oid);
+    //                 $('#mid').val(mid);
+                    
+    //              }
+
+    //           }
+    //         })
+   
+       
+    //   }
+
+    //   function pay_money()
+    //   {
+       
+    //       var pid = $('input[name="pid"]').val();
+    //       var hid = $('input[name="hid"]').val();
+
+    //       var password = $('input[name="password"]').val();
+    //       var oid = $('input[name="oid"]').val();
+    //       var mid = $('input[name="mid"]').val();
+        
+    //       var order_price =parseFloat(document.getElementById('modal_total').innerHTML) ;
+    //       var yu_e = parseFloat(document.getElementById('checkedMoney').innerHTML) ;
+    //       if(order_price>yu_e)
+    //       {
+    //         bootbox.alert('余额不足！支付失败！')
+    //       }
+    //       else{
+    //       $.ajax({
+    //           type:'post',
+    //           contentType:'application/json;charset=utf-8',
+    //           url:'goPay',
+    //           data:'{"mid":"'+mid+'", "oid":"'+oid+'","yu_e":"'+yu_e+'","order_price":"'+order_price+'","password":"'+password+'","hid":"'+hid+'","pid":"'+pid+'"}',
+
+    //           success:function(result)
+    //           {
+               
+    //              if(result.code==='200')
+    //              {
+                   
+    //                bootbox.alert(result.message);
+    //                window.location.reload();
+
+    //              }
+    //              else{
+
+
+    //               bootbox.alert(result.message);
+    //               window.location.reload();
+
+    //              }
+    //           }
+
+    //       })
+
+    //     }
+
+
+
+    //   }
+
+    //   function cancel(oid,order_count,mid)
+    //   {
+    //     alert("oid:"+oid+"order_count:"+order_count+"mid:"+mid);
+    //     $.ajax({
+    //           type:'post',
+    //           contentType:'application/json;charset=utf-8',
+    //           url:'ordersCancel',
+    //           data:'{"oid":"'+oid+'","order_count":"'+order_count+'","mid":"'+mid+'"}',
+
+    //           success:function(result)
+    //           {
+               
+    //              if(result.code==='200')
+    //              {
+                   
+    //                bootbox.alert(result.message);
+                 
+
+    //              }
+    //              else{
+
+
+    //               bootbox.alert(result.message);
+                
+
+    //              }
+    //              window.location.reload();
+    //           }
+
+    //       })
+
+
+
+
+
+    //   }
+
+
+     
+    </script>
+    </body>
+</html>

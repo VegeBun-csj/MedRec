@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+     <link rel="stylesheet" type="text/css" href="/hosp/css/bootstrap.min.css"/>
+  	<script src="/hosp/js/jquery-1.9.1.js"></script>
+    <script src="/hosp/js/bootstrap.min.js"></script>
+    <script src="/hosp/js/bootbox.min.js"></script>
+    <style>
+        body,html{
+            width: 100%;
+            height: 100%;
+            background: #fff;
+        }
+        #sidebar{
+        left: 0;
+        margin-top: 0;
+    }
+ 
+    .blue{
+        color:blue;
+    }
+        #editor{
+            height: 200px;
+        }
+        #main-content{
+            margin-left: 190px;
+        }
+        #page-content {
+            margin: 0;
+            background: #FFF;
+            padding: 8px 20px 24px;
+        }
+        .modal-footer{
+            background: #fff;
+        }
+
+
+    </style>
+
+</head>
+<body>
+    
+    <div id="main-content" class="clearfix">
+        <div id="page-content" class="clearfix">
+    
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+    
+                    <div class="modal-body" style="max-height:none" >
+                        <table class="table table-bordered table-striped" border="1px">
+                            <tr>
+                                <td>交易ID</td>
+                                <td>交易时间</td>
+                                <td>数据是否被删除</td>
+                                <td>请通过以下地址查询病例</td>
+								
+                            </tr>
+                            
+                          <%dataobj.forEach(function(item){%>
+                            <tr>
+                                <td ><%=item.transactionID%></td>
+                                <td ><%=item.transaction_Time%></td>
+                                <td ><%=item.isDeleted%></td>
+                                <td><a href="http://127.0.0.1:8080/ipfs/<%=item.IPFS_crypt_hash%>"><%=item.IPFS_crypt_hash%></td>
+								
+                            </tr>
+                          <%})%>
+                        </table>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+</div>
+</div>
+  
+ <script>
+
+     
+		
+	
+
+       
+    </script>
+</body>
+
+</html>

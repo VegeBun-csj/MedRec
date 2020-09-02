@@ -1,0 +1,79 @@
+
+body .ui.inverted.segment {
+  background-color: #777;
+}
+
+#whole.segment {
+  height: 500px;
+}
+
+.ui.borderless.inverted.menu {
+  background-color: #2f2f2f;
+  border-radius: 4px;
+}
+.ui.borderless.inverted.menu .active.item {
+  background-color: black;
+}
+
+p code {
+  background-color: white;
+  border-radius: 4px;
+}
+
+#slide.row {
+  width: 300vw !important;
+  overflow: hidden;
+  position: absolute;
+  margin-top: 5em;
+}
+#slide.row .column {
+  padding: 0 !important;
+}
+#slide.row .column h1.header {
+  font-size: 2.5em;
+}
+#slide.row .column p {
+  font-size: 1.4em;
+  line-height: 1.4;
+}
+
+#control.grid {
+  position: relative;
+  top: 7em;
+}
+#control.grid .ui.button {
+  box-shadow: none;
+}
+#control.grid .ui.button:hover {
+  background: transparent !important;
+}
+#control.grid .ui.button .icon {
+  color: #bfbfbf;
+}
+#control.grid .ui.button .icon:hover {
+  background: transparent;
+  color: white;
+}
+
+#bubble.row {
+  position: absolute;
+  bottom: 0;
+}
+
+.ui.grid .ui.items .item .content {
+  align-self: center;
+}
+.ui.grid .ui.items .item .content h1 {
+  font-size: 3.5em;
+}
+.ui.grid .ui.items .item .content h1 span.disabled {
+  color: grey;
+}
+.ui.grid .ui.items .item .content p {
+  font-size: 1.5em;
+  line-height: 1.5;
+}
+
+.ui.footer.container {
+  font-size: 1.2em;
+}

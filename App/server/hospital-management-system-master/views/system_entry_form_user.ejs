@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+  <!-- <meta content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=no" name="viewport" />
+  <meta content="Semantic-UI-Forest, collection of design, themes and templates for Semantic-UI." name="description" />
+  <meta content="Semantic-UI, Theme, Design, Template" name="keywords" />
+  <meta content="PPType" name="author" />
+  <meta content="#ffffff" name="theme-color" />
+   --><title>Hospital XYZ</title>
+  <link rel="stylesheet" type="text/css" href="semantic.min.css" />
+  <link rel="stylesheet" type="text/css" href="default.css" />
+  <link rel="stylesheet" type="text/css" href="pandoc-code-highlight.css" />
+  <!-- <link rel="stylesheet" type="text/css" href="style_02.css"> -->
+  <script src="jquery.min.js"></script>
+</head>
+
+
+<body>
+  <div class="ui container">
+    <form class="ui large form" action="/create_user" method="POST">
+      <h1>Fill up the form to add new user to the system</h1>
+      <div class="field">
+          <label>Username</label>
+          <input placeholder="username" name="username" type="text" style="width: 200px">
+      </div>
+      
+      <div class="field">
+          <label>Password</label>
+          <input placeholder="password" name="password" type="text" style="width: 200px">
+      </div>
+
+      <div class="field">
+            <label>Select your user type</label>
+            <select name="role" type="text" style="width: 200px">
+              <option value="Staff">Staff</option>
+              <option value="Doctor">Doctor</option>
+              <option value="Nurse">Nurse</option>
+            </select>
+      </div>
+
+      <botton class="ui primary submit button">Add User</button>
+
+    </form>
+  </div>
+
+<script src="semantic.min.js"></script>
+
+  <script>
+  $('.ui.form')
+    .form({
+      fields: {
+        name       : 'empty',
+        gender     : 'empty',
+        age        : 'empty',
+        contact    : 'empty',
+        address    : 'empty',
+        supervisor : 'empty',
+        ward       : 'empty'
+        /*speciality : 'empty'*/
+        /*username : 'empty',
+        password : ['minLength[6]', 'empty'],
+        speciality   : ['minCount[2]', 'empty'],
+        terms    : 'checked'*/
+      }
+    })
+  ;
+</script>
+
+</body>
+</html>

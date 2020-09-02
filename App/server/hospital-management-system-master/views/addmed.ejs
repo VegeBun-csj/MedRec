@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <!-- <meta content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=no" name="viewport" />
+    <meta content="Semantic-UI-Forest, collection of design, themes and templates for Semantic-UI." name="description" />
+    <meta content="Semantic-UI, Theme, Design, Template" name="keywords" />
+    <meta content="PPType" name="author" />
+    <meta content="#ffffff" name="theme-color" />
+     --><title>Hospital XYZ</title>
+    <link rel="stylesheet" type="text/css" href="/hosp/semantic.min.css" />
+    <link rel="stylesheet" type="text/css" href="/hosp/default.css" />
+    <link rel="stylesheet" type="text/css" href="/hosp/pandoc-code-highlight.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="style_02.css"> -->
+    <script src="/hosp/jquery.min.js"></script>
+</head>
+
+
+<body>
+
+<!-- <div class="ui horizontal divider">or</div> -->
+
+<div class="ui container">
+
+  <form class="ui form segment" action="/addmed" method="POST" enctype="multipart/form-data" >
+
+        <h1>请填写药品相关信息：</h1>
+
+
+        <div class="three fields">
+
+            <div class="field">
+                <label>适用症状</label>
+                <select class="ui dropdown" name="m_type">
+                    <% if (datas1) { %>
+                    <% datas1.forEach(function(row){ %>
+                    <option value="<%=row.symptomName%>"><%=row.symptomName%></option>
+                    <% }) %>
+                    <% } %>
+                </select>
+            </div>
+
+            <div class="field">
+                <label>药名</label>
+                <input  name="m_name" type="text">
+            </div>
+
+            <div class="field">
+                <label>数量</label>
+                <input  name="m_num" type="number">
+            </div>
+        </div>
+
+        <div class="three fields">
+            <div class="field">
+                <label>价格</label>
+                <input  name="m_price" type="number" min="0.00">
+            </div>
+
+            <div class="field">
+                <label>规格</label>
+                <input  name="m_guige" type="text">
+            </div>
+
+            <div class="field">
+                <label>有效期</label>
+                <input  name="m_youxiaoqi" type="text">
+            </div>
+        </div>
+
+        <div class="two fields">
+            <div class="field">
+                <label>生产商</label>
+                <input  name="m_producerName" type="text">
+            </div>
+            <div class="field">
+                <label>生产地址</label>
+                <input  name="m_producerAddress" type="text">
+            </div>
+        </div>
+
+        <caption> <strong> 用法与功能 </strong></caption>
+        <div class="two fields">
+            <div class="field">
+                <label>用法</label>
+                <textarea name="m_yongfa" type="text"></textarea>
+            </div>
+            <div class="field">
+                <label>功能</label>
+                <textarea name="m_gongneng" type="text"></textarea>
+            </div>
+        </div>
+
+        <caption> <strong> 药品准字 </strong></caption>
+        <div class="two fields">
+            <div class="field">
+                <label>成分</label>
+                <textarea name="m_chengfen" type="text"></textarea>
+            </div>
+            <div class="field">
+                <label>准字</label>
+                <input name="m_wenhao" type="text">
+            </div>
+        </div>
+
+
+          <caption> <strong> 其他信息 </strong></caption>
+        <div class="two fields">
+            <div class="field">
+                <label>不良反应情况</label>
+                <textarea name="m_buliangfanying" type="text"></textarea>
+            </div>
+            <div class="field">
+                <label>图片</label>
+                <input  name="m_pic" type="file">
+            </div>
+        </div>
+
+
+
+        <button class="ui primary submit button">保存</button>
+        <div class="ui error message"></div>
+    </form>
+
+    <div> <a href="/profile">返回首页</a> </div>
+
+</div>
+
+
+
+<script src="/hosp/semantic.min.js"></script>
+
+<script>
+    $('.ui.form')
+        .form({
+            fields: {
+                name       : 'empty',
+                gender     : 'empty',
+                age        : 'empty',
+                contact    : 'empty',
+                address    : 'empty',
+                supervisor : 'empty',
+                ward       : 'empty'
+                /*speciality : 'empty'*/
+                /*username : 'empty',
+                password : ['minLength[6]', 'empty'],
+                speciality   : ['minCount[2]', 'empty'],
+                terms    : 'checked'*/
+            }
+        })
+    ;
+</script>
+
+</body>
+</html>
+
+
+

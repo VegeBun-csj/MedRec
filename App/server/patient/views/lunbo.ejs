@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>首页</title>
+
+    <link rel="stylesheet" href="/patient/css/sliderx.css">
+    <link rel="stylesheet" href="/patient/css/basic.css">
+    <link rel="stylesheet" href="/patient/css/index.css">
+    <link rel="stylesheet" href="/patient/css/bootstrap.min.css">
+    
+    <script src="/patient/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/patient/js/sliderx.js"></script>
+    <style>
+    </style>
+</head>
+
+<body>
+
+<header id="header">
+    <div class="centre">
+        <nav class="link">
+            <h2 class="none">首页导航</h2>
+            <ul>
+                <li class="active"><a href="/" style="height: 40px">首页</a></li>
+                <li><a href="/goRegister">注册</a></li>
+                <li><a href="/goLogin">登录</a></li>
+            </ul>
+        </nav>
+    </div>
+
+</header>
+
+<hr>
+<div class="control-box" style="margin-top: 10px">
+    <span style="font-size:50px"><p><b><%=lunbo.news_title%></b></p></span>
+	<br> <span style="margin-left:500px"><%=lunbo.news_date%></span>
+	<br><span ><%-lunbo.news_content%><span>
+</div>
+
+</body>
+</html>
+

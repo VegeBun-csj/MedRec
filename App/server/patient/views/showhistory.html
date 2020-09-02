@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    {% for item in dataobj %}
+    <li>
+        交易ID:{{item.transactionID}}
+        IPFS—hash地址:{{item.IPFS_crypt_hash}}
+        交易时间:{{item.transaction_Time}}
+        记录是否被删除:{{item.isDeleted}}
+        
+    </li>
+    {% endfor %} 
+
+
+
+
+
+</body>
+
+</html>

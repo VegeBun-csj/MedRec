@@ -1,0 +1,93 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+</head>
+
+<body>
+    <h1>医院医生查询界面</h1>
+    <h1>开始查询病人在其他医院的病历</h1>
+	<form action="/thirdsele" method="post">
+    患者名 <input type="text" name="patient" >
+    患者身份证号 <input type="text" name="idnum">
+    
+    <input type="hidden" name="hospital" value="<%=hospital%>">
+    <input type="submit"   value="即将查询该患者在其他医院的病历">
+	</form>
+    <br>
+    <br>
+   
+</body>
+
+<script>
+   
+
+</script>
+
+
+</html>-->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <!-- <meta content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=no" name="viewport" />
+    <meta content="Semantic-UI-Forest, collection of design, themes and templates for Semantic-UI." name="description" />
+    <meta content="Semantic-UI, Theme, Design, Template" name="keywords" />
+    <meta content="PPType" name="author" />
+    <meta content="#ffffff" name="theme-color" />
+     --><title>Hospital XYZ</title>
+    <link rel="stylesheet" type="text/css" href="/hosp/semantic.min.css" />
+    <link rel="stylesheet" type="text/css" href="/hosp/default.css" />
+    <link rel="stylesheet" type="text/css" href="/hosp/pandoc-code-highlight.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="style_02.css"> -->
+    <script src="/hosp/jquery.min.js"></script>
+</head>
+
+
+<body>
+
+<!-- <div class="ui horizontal divider">or</div> -->
+
+<div class="ui container">
+
+    <form class="ui form segment" action="/thirdsele" method="POST">
+
+        <h1>医院医生查询界面</h1>
+		<h1>开始查询病人在其他医院的病历</h1>
+        <div class="three fields">
+            <div class="field">
+                <label>患者名</label>
+               <input type="text" name="patient" >
+            </div>
+        </div>
+        <div class="three fields">
+            <div class="field">
+                <label>患者身份证号</label>
+             <input type="text" name="idnum">
+            </div>
+        </div>
+		  <input type="hidden" name="hospital" value="<%=hospital%>">
+	
+        <button class="ui primary submit button">即将查询该患者在其他医院的病历</button>
+        <div class="ui error message"></div>
+		 <div> <a href="/profile">返回首页</a> </div>
+    </form>
+
+
+</div>
+
+
+
+<script src="/hosp/semantic.min.js"></script>
+
+
+
+</body>
+</html>

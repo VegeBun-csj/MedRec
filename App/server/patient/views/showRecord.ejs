@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <link rel="stylesheet" type="text/css" href="/patient/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/patient/richText/bootstrap-combined.no-icons.min.css">
+    <link rel="stylesheet" href="/patient/richText/index.css" type="text/css"> </link>
+
+    <link rel="stylesheet" type="text/css" href="/patient/css/bootstrap-responsive.min.css"/>
+
+    <link rel="stylesheet" type="text/css"  href="/patient/css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/patient/css/ace.min.css"/>
+
+    <link rel="stylesheet" type="text/css" href="/patient/css/ace-skins.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/patient/css/ace-responsive.min.css" />
+    <link rel="stylesheet" type="text/css" href="/patient/webuploader/webuploader.css" />
+    <script src="/patient/js/jquery-1.9.1.js"></script>
+    <script src="/patient/js/bootstrap.min.js"></script>
+    <script src="/patient/js/bootbox.min.js"></script>
+    <style>
+        body,html{
+            width: 100%;
+            height: 100%;
+            background: #fff;
+        }
+        #sidebar{
+        left: 0;
+        margin-top: 0;
+    }
+ 
+    .blue{
+        color:blue;
+    }
+        #editor{
+            height: 200px;
+        }
+        #main-content{
+            margin-left: 190px;
+        }
+        #page-content {
+            margin: 0;
+            background: #FFF;
+            padding: 8px 20px 24px;
+        }
+        .modal-footer{
+            background: #fff;
+        }
+
+
+    </style>
+
+</head>
+<body>
+    <div class="navbar navbar-inverse">
+        <div class="navbar-inner" style="background:#0099CC;">
+            <div class="container-fluid">
+                <a class="brand">
+                    <small><i class="icon-leaf"></i> 医疗信息系统-病人端</small>
+                </a>
+    
+                <ul class="nav ace-nav pull-right">
+    
+                    <li class="light-blue user-profile">
+                        <a class="user-menu dropdown-toggle" href="javascript:;" data-toggle="dropdown">
+                            <img alt="LRJ" src="/patient/image/avatar.jpg" class="nav-user-photo">
+                            <span id="user_info"><small>Welcome</small>贾雪磊 </span>
+                            <i class="icon-caret-down"></i>
+                        </a>
+                        <ul id="user_menu" class="pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-closer">
+    
+    
+                            <li><a href="/logout"><i class="icon-off"></i> 退出</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="sidebar">
+        <div id="sidebar-shortcuts">
+    
+            <div id="sidebar-shortcuts-large">
+    
+                <button class="btn btn-small btn-success"><i class="icon-signal"></i></button>
+    
+                <button class="btn btn-small btn-info"><i class="icon-pencil"></i></button>
+    
+                <button class="btn btn-small btn-warning"><i class="icon-group"></i></button>
+    
+                <button class="btn btn-small btn-danger"><i class="icon-cogs"></i></button>
+    
+            </div>
+    
+            <div id="sidebar-shortcuts-mini">
+    
+                <span class="btn btn-success"></span>
+    
+                <span class="btn btn-info"></span>
+    
+                <span class="btn btn-warning"></span>
+    
+                <span class="btn btn-danger"></span>
+    
+            </div>
+    
+        </div><!-- #sidebar-shortcuts -->
+    
+    
+    
+        <ul class="nav nav-list">
+    
+    
+            <li >
+    
+                <a href="/patient/myDetail?pid=<%=pid%>&hid=<%=hid%>" >
+    
+                    <i class="icon-picture"></i>
+    
+                    <span>我的信息</span>
+    
+                </a>
+    
+            </li>
+    
+    
+            <li>
+    
+                <a href="/patient/selectKeshi?pid=<%=pid%>&hid=<%=hid%>">
+    
+                    <i class="icon-th"></i>
+    
+                    <span>问诊</span>
+    
+                </a>
+    
+            </li>
+    
+            <li class="active">
+    
+                <a href="/patient/giveAuthority?pid=<%=pid%>&hid=<%=hid%>" >
+    
+                    <i class="icon-th"></i>
+    
+                    <span>链上就诊信息</span>
+    
+                </a>
+    
+            </li>
+            <li>
+                <a href="/patient/yaofang?pid=<%=pid%>&hid=<%=hid%>" >
+    
+                    <i class="icon-th"></i>
+    
+                    <span>药房</span>
+    
+                </a>
+    
+            </li>
+
+            <li>
+                <a href="/patient/wishList?pid=<%=pid%>&hid=<%=hid%>" >
+    
+                    <i class="icon-th"></i>
+    
+                    <span>收藏</span>
+    
+                </a>
+    
+            </li>
+
+    
+            <li>
+                <a href="/patient/myOrders?pid=<%=pid%>&hid=<%=hid%>" >
+    
+                    <i class="icon-th"></i>
+    
+                    <span>我的订单</span>
+    
+                </a>
+            </li>
+            <li>
+                <a href="/patient/mybinli?pid=<%=pid%>&hid=<%=hid%>" >
+    
+                    <i class="icon-th"></i>
+    
+                    <span>我的病历</span>
+    
+                </a>
+            </li>
+            <li>
+                <a href="/patient/myWallet?pid=<%=pid%>&hid=<%=hid%>" >
+    
+                    <i class="icon-th"></i>
+    
+                    <span>钱包</span>
+    
+                </a>
+            </li>
+    
+    
+    
+    
+        </ul><!--/.nav-list-->
+    
+    
+    
+        <div id="sidebar-collapse"><i class="icon-double-angle-left"></i></div>
+    </div>
+
+    <div id="main-content" class="clearfix">
+        <div id="page-content" class="clearfix">
+    
+    
+            <div class="page-header position-relative">
+                <h1 style="color: #2679b5;font-size: 24px;font-weight: normal">病人<small style="font-size: 14px"><i class="icon-double-angle-right"></i> 显示链上病历</small></h1>
+            </div>
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+    
+                    <div class="modal-body" style="max-height:none" >
+                        <table class="table table-bordered table-striped" border="1px">
+                            <tr>
+                                <td>交易ID</td>
+                                <td>交易时间</td>
+                                <td>数据是否被删除</td>
+                                <td>请通过以下地址查询病例</td>
+								<td>操作</td>
+                            </tr>
+                            
+                          <%dataobj.forEach(function(item){%>
+                            <tr>
+                                <td ><%=item.transactionID%></td>
+                                <td ><%=item.transaction_Time%></td>
+                                <td ><%=item.isDeleted%></td>
+                                <td><a href="http://127.0.0.1:8080/ipfs/<%=item.IPFS_crypt_hash%>"><%=item.IPFS_crypt_hash%></td>
+								<td> <button  class="btn btn-primary"> <a href="/patient/toAuthority?pid=<%=pid%>&ipfs=<%=item.IPFS_crypt_hash%>&hid=<%=hid%>">授权第三方医院</a>   </button> 
+								<td>
+                            </tr>
+                          <%})%>
+                        </table>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+</div>
+</div>
+   <script src="/patient/js/jquery-1.9.1.js"></script>
+    <script src="/patient/js/bootstrap.min.js"></script>
+    <script src="/patient/js/bootbox.min.js"></script>
+ <script>
+
+     
+		
+	
+
+       
+    </script>
+</body>
+
+</html>

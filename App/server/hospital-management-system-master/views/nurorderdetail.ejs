@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <!-- <meta content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=no" name="viewport" />
+    <meta content="Semantic-UI-Forest, collection of design, themes and templates for Semantic-UI." name="description" />
+    <meta content="Semantic-UI, Theme, Design, Template" name="keywords" />
+    <meta content="PPType" name="author" />
+    <meta content="#ffffff" name="theme-color" />
+     --><title>护士工作站 XYZ</title>
+    <link rel="stylesheet" type="text/css" href="semantic.min.css" />
+    <link rel="stylesheet" type="text/css" href="default.css" />
+    <link rel="stylesheet" type="text/css" href="pandoc-code-highlight.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="style_02.css"> -->
+    <script src="jquery.min.js"></script>
+</head>
+
+
+<body>
+
+<!-- <div class="ui horizontal divider">or</div> -->
+<div class="ui container">
+
+    <form class="ui form segment" action="/nurorderdetail" method="POST">
+        <h1> 病人： </h1>
+        <div class="three fields">
+            <div class="field">
+                <label>病人姓名：</label>
+                <input  value="<%=patient[0].name%>" readonly="readonly" type="text">
+            </div>
+            <div class="field">
+                <label>病人编号：</label>
+                <input  value="<%=patient[0].id%>" readonly="readonly" type="text">
+            </div>
+            <div class="field">
+                <label>病人科室：</label>
+                <input  value="<%=patient[0].diagnosis%>" readonly="readonly" type="text">
+            </div>
+        </div>
+        <h1>新开医嘱：</h1>
+        <div class="two fields">
+            <div class="field">
+                <label>项目名称</label>
+                <input  value="<%=datas[0].item_name%>" readonly="readonly" name="item_name" type="text">
+            </div>
+        </div>
+
+        <div class="two fields">
+            <div class="field">
+                <label>频次</label>
+                <input  value="<%=datas[0].pinci%>" readonly="readonly" name="pinci" type="text">
+            </div>
+        </div>
+
+        <div class="two fields">
+            <div class="field">
+                <label>医生说明</label>
+                <input  value="<%=datas[0].description%>" readonly="readonly" name="description" type="text">
+            </div>
+        </div>
+
+        <div class="two fields">
+            <div class="field">
+                <label>费用</label>
+                <input  value="<%=datas[0].cost%>" readonly="readonly" name="costs" type="text">
+            </div>
+        </div>
+
+        <div class="two fields">
+            <div class="field">
+                <label>是否为出院通知</label>
+                <input  value="<%=datas[0].chuyuantongzhi%>" readonly="readonly" type="text">
+            </div>
+        </div>
+
+        <div class="two fields">
+            <div class="field">
+                <%if((datas[0].chuyuantongzhi)&&(datas[0].chuyuantongzhi='是')){%>
+                <div> <a href="/chuyuan">出院</a> </div>
+                <%}%>
+            </div>
+        </div>
+
+
+
+        <button class="ui primary submit button">转抄/校对</button>
+        <div class="ui error message"></div>
+    </form>
+
+    <div> <a href="/profile">Go back</a> </div>
+
+</div>
+
+<!-- 上传图片 -->
+
+
+<script src="semantic.min.js"></script>
+
+<script>
+    $('#j_imgfile').on('change',function(){
+        // 判断上传文件类型
+        var objFile = $('#j_imgfile').val();
+        var objType = objFile.substring(objFile.lastIndexOf(".")).toLowerCase();
+        var formData = new FormData(document.forms.namedItem("picForm"));
+        console.log(objType);
+        if(!(objType == '.jpg'||objType == '.png'))
+        {
+            alert("请上传jpg、png类型图片");
+            return false;
+        }else{
+            $.ajax({
+                type : 'post',
+                url : '/uploadUserImgPre',
+                data: formData ,
+                processData:false,
+                async:false,
+                cache: false,
+                contentType: false,
+                success:function(re){
+                    re.imgSrc = re.imgSrc.replace('public','');
+                    re.imgSrc = re.imgSrc.replace(/\\/g,'\/');
+                    $('#j_imgPic').attr('src',re.imgSrc);
+                },
+                error:function(re){
+                    console.log(re);
+                }
+            });
+        }
+    });
+    $('.ui.form')
+        .form({
+            fields: {
+                name       : 'empty',
+                gender     : 'empty',
+                age        : 'empty',
+                contact    : 'empty',
+                address    : 'empty',
+                supervisor : 'empty',
+                ward       : 'empty'
+                /*speciality : 'empty'*/
+                /*username : 'empty',
+                password : ['minLength[6]', 'empty'],
+                speciality   : ['minCount[2]', 'empty'],
+                terms    : 'checked'*/
+            }
+        })
+    ;
+</script>
+
+</body>
+</html>
+
+
+

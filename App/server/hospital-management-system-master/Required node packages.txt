@@ -1,0 +1,1 @@
+bcrypt-nodejs body-parser connect-flash cookie-parser ejs express express-session morgan mysql passport passport-local path serve-favicon

@@ -1,0 +1,183 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>首页</title>
+
+    <link rel="stylesheet" href="/patient/css/sliderx.css">
+    <link rel="stylesheet" href="/patient/css/basic.css">
+    <link rel="stylesheet" href="/patient/css/index.css">
+    <link rel="stylesheet" href="/patient/css/bootstrap.min.css">
+    
+    <script src="/patient/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/patient/js/sliderx.js"></script>
+    <style>
+    </style>
+</head>
+
+<body>
+
+<header id="header">
+    <div class="centre">
+        <nav class="link">
+            <h2 class="none">首页导航</h2>
+            <ul>
+                <li class="active"><a href="/" style="height: 40px">首页</a></li>
+                <li><a href="/goRegister">注册</a></li>
+                <li><a href="/goLogin">登录</a></li>
+            </ul>
+        </nav>
+    </div>
+
+</header>
+
+<hr>
+<div class="control-box" style="margin-top: 10px">
+    <ul>
+        <li class="prev">
+            <img src="/patient/image/left_02.png" alt="prev">
+        </li>
+        <li class="next">
+            <img src="/patient/image/right_02.png" alt="next">
+        </li>
+    </ul>
+    <div class="bigbox">
+        <div id="switcher">
+            <div class="content_1">
+                <div class="box" style="background-image: url(/patient/image/hots_01.jpg);">
+                    <div class="shadow">
+                        <a href="/lunbo?lunbo_id=2" >5月底疫苗可进行动物试验和有效性试验阶段</a>
+                    </div>
+                </div>
+                <div class="box" style="background-image: url(/patient/image/hots_02.jpg);">
+                    <div class="shadow">
+                        <a href="/lunbo?lunbo_id=3">南非顶尖艾滋病专家因新冠去世，享年64岁</a>
+                    </div>
+                </div>
+                <div class="box" style="background-image: url(/patient/image/hots_03.jpg);">
+                    <div class="shadow">
+                        <a href="/lunbo?lunbo_id=4">钟南山谈后遗症：是否会有后遗症还需要密切观察</a>
+                    </div>
+                </div>
+                <div class="box" style="background-image: url(/patient/image/hots_04.jpg);">
+                    <div class="shadow">
+                        <a href="/lunbo?lunbo_id=1">日本一医院17名医务人员被感染</a>
+                    </div>
+                </div>
+            </div>
+            <div class="content_2"></div>
+        </div>
+    </div>
+</div>
+
+<div class="A">
+    <div class="A1"><strong> 医疗新闻  </strong></div>
+    <div class="A2"></div>
+    <div class="A3">
+        <div>
+            <div class="A33"></div>
+
+            <div class="A31"><a href="http://www.hasyy.cn/news/getDetail?newsId=875"style="color: #0f0f0f"><span>英雄凯旋 淮安市一院援鄂医疗队圆满完成抗疫任务</span></a></div>
+            <div class="A32">2020-03-24 </div>
+            <br><hr>
+        </div>
+        <div>
+            <div class="A33"></div>
+
+            <div class="A31"><a href="http://www.hasyy.cn/news/getDetail?newsId=874"style="color: #0f0f0f"><span>孙兵被江苏省团委通报表扬</span></a></div>
+            <div class="A32">2020-03-24 </div>
+            <br><hr>
+        </div>
+        <div>
+            <div class="A33"></div>
+
+            <div class="A31"><a th:href="@{/NewsController/list_1?id=__${item.id}__ }"style="color: #0f0f0f"><span>喜讯！淮安市一院陈亮被记大功，夏慧被记功奖励</span></a></div>
+            <div class="A32">2020-03-24 </div>
+            <br><hr>
+        </div>
+        <div>
+            <div class="A33"></div>
+
+            <div class="A31"><a th:href="@{/NewsController/list_1?id=__${item.id}__ }"style="color: #0f0f0f"><span>淮安市一院援鄂“白衣战士”陈亮直接认定高级职称</span></a></div>
+            <div class="A32">2020-03-24 </div>
+            <br><hr>
+        </div>
+        <div>
+            <div class="A33"></div>
+
+            <div class="A31"><a th:href="@{/NewsController/list_1?id=__${item.id}__ }"style="color: #0f0f0f"><span>淮安市一院陈亮荣获全国卫生健康系统疫情防控先进个人</span></a></div>
+            <div class="A32">2020-03-24 </div>
+            <br><hr>
+        </div>
+        <div>
+            <div class="A33"></div>
+
+            <div class="A31"><a th:href="@{/NewsController/list_1?id=__${item.id}__ }"style="color: #0f0f0f"><span>“肝胆相照、胰路前行”——淮安市一院举办江苏省肝胆胰外科沙龙</span></a></div>
+            <div class="A32">2020-03-24 </div>
+            <br><hr>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="M">
+    <div class="C">
+
+        <div class="C2"><strong>要闻动态</strong>
+
+
+        </div>
+        <div class="A3">
+            <div>
+                <div class="A33-2"></div>
+
+                <div class="C4"><a th:href="@{/CompanyController/list_1?id=__${item.id}__ }"style="color: #0f0f0f"><span>4月2日江苏无新增本地新冠肺炎确诊病例</span></a></div>
+                <div th:text="${item.industry}" class="C5">2020-04-03 </div>
+                <br><hr>
+            </div>
+        </div>
+        <div class="A3">
+            <div>
+                <div class="A33-2"></div>
+
+                <div class="C4"><a th:href="@{/CompanyController/list_1?id=__${item.id}__ }"style="color: #0f0f0f"><span>4月2日江苏无新增本地新冠肺炎确诊病例</span></a></div>
+                <div th:text="${item.industry}" class="C5">2020-04-03 </div>
+                <br><hr>
+            </div>
+        </div>
+    </div>
+    <div class="D">
+
+        <div class="C2"><strong>健康科普</strong></div>
+        <div class="A3">
+            <div th:each="item,state:${postList}">
+                <div class="A33-2"></div>
+
+                <div class="C4"><a th:href="@{/PostController/list_1?id=__${item.id}__ }"style="color: #0f0f0f"><span th:text="${item.name}">2020年3月24日世界防治结核病日</span></a></div>
+                <div th:text="${item.salary}"class="C5">2020-3-25</div>
+                <br><hr>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="bottom">
+
+</div>
+<!-- 
+<div class="E">
+    <div class="E2">
+        <span class="E21">友情链接</span>
+        <br>
+        <tr th:each="item,state:${linkList}">
+            <div class="A33-2"></div>
+            <td style="font-size: 15px"><a th:href="${item.url}"><span th:text="${item.name}"style="color: #0f0f0f;font-size: 18px"></span></a></td>
+            <br><hr>
+        </tr>
+
+    </div>
+
+</div> -->
+
+</body>
+</html>

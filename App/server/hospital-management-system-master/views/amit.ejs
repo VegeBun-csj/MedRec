@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <!-- <meta content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=no" name="viewport" />
+    <meta content="Semantic-UI-Forest, collection of design, themes and templates for Semantic-UI." name="description" />
+    <meta content="Semantic-UI, Theme, Design, Template" name="keywords" />
+    <meta content="PPType" name="author" />
+    <meta content="#ffffff" name="theme-color" />
+     --><title>Hospital XYZ</title>
+    <link rel="stylesheet" type="text/css" href="/hosp/semantic.min.css" />
+    <link rel="stylesheet" type="text/css" href="/hosp/default.css" />
+    <link rel="stylesheet" type="text/css" href="/hosp/pandoc-code-highlight.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="style_02.css"> -->
+    <script src="/hosp/jquery.min.js"></script>
+</head>
+
+
+<body>
+
+<!-- <div class="ui horizontal divider">or</div> -->
+
+<div class="ui container">
+
+    <form class="ui form segment" action="/guahaowancheng" method="POST">
+
+        <h1>进行门诊登记：</h1>
+
+        <div class="three fields">
+
+            <div class="field">
+                <label>姓名</label>
+                <input value="<%=datas[0].pname%>" name="name" type="text">
+            </div>
+
+            <div class="field">
+                <label>年龄</label>
+                <input value="<%=datas[0].age%>" name="age" type="text">
+            </div>
+        </div>
+
+        <div class="three fields">
+
+            <div class="field">
+                <label>手机号码</label>
+                <input value="<%=datas[0].telephone%>" name="phonenumber" type="text">
+            </div>
+
+            <div class="field">
+                <label>身份证号</label>
+                <input value="<%=datas[0].icd%>" name="idcard" type="text">
+            </div>
+        </div>
+
+        <caption> <strong> 病情描述 </strong></caption>
+        <div class="two fields">
+            <div class="field">
+                <label>病人描述</label>
+                <textarea value="" name="symptoms" type="text"></textarea>
+            </div>
+        </div>
+
+        <button class="ui primary submit button">登记</button>
+        <div class="ui error message"></div>
+    </form>
+
+    <div> <a href="/profile">Go back</a> </div>
+
+</div>
+
+
+
+<script src="semantic.min.js"></script>
+
+<script>
+    $('.ui.form')
+        .form({
+            fields: {
+                name       : 'empty',
+                gender     : 'empty',
+                age        : 'empty',
+                contact    : 'empty',
+                address    : 'empty',
+                supervisor : 'empty',
+                ward       : 'empty'
+                /*speciality : 'empty'*/
+                /*username : 'empty',
+                password : ['minLength[6]', 'empty'],
+                speciality   : ['minCount[2]', 'empty'],
+                terms    : 'checked'*/
+            }
+        })
+    ;
+</script>
+
+</body>
+</html>
+
+
+

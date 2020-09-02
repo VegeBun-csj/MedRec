@@ -1,0 +1,13 @@
+
+body {
+	background-color: #eee;
+}
+
+.ui.container {
+	margin-top: 6em;
+	max-width: 22em !important;
+}
+/* style the go back anchor tag */
+#goBack{
+	
+}

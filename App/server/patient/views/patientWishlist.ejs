@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="/patient/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/patient/richText/bootstrap-combined.no-icons.min.css">
+    <link rel="stylesheet" href="/patient/richText/index.css" type="text/css"> </link>
+    
+    <link rel="stylesheet" type="text/css" href="/patient/css/bootstrap-responsive.min.css"/>
+    
+    <link rel="stylesheet" type="text/css"  href="/patient/css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/patient/css/ace.min.css"/>
+    
+    <link rel="stylesheet" type="text/css" href="/patient/css/ace-skins.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/patient/css/ace-responsive.min.css" />
+    <link rel="stylesheet" type="text/css" href="/patient/webuploader/webuploader.css" />
+
+
+    <script src="/patient/jquery.min.js"></script>
+    <script src="/patient/js/bootstrap.min.js"></script>
+    <script src="/patient/js/bootbox.min.js"></script>
+    <script src="/patient/richText/bootstrap-wysiwyg.js" type="text/javascript"></script>
+    <script src="/patient/richText/jquery.hotkeys.js" type="text/javascript"></script>
+        <style type="text/css">
+            body,html{
+                width: 100%;
+                height: 100%;
+                background: #fff;
+            }
+            #sidebar{
+        left: 0;
+        margin-top: 0;
+    }
+ 
+    .blue{
+        color:blue;
+    }
+            img{
+                width: 200px;
+                height: 200px;
+            }
+            .imglist{
+                width: 100%;
+                height: 250px;
+                list-style: none;
+                margin-left: 100px;
+
+            }
+            .imglist a{
+                display: block;
+                width: 100%;
+                height: 100%;
+            }
+            .imglist img{
+                float: left;
+                margin-right: 20px;
+            }
+            .imglist .right,.imglist label{
+                float: left;
+            }
+            .imglist label{
+                width: 25px;
+                height: 25px;
+                margin-right: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="navbar navbar-inverse">
+            <div class="navbar-inner" style="background:#0099CC;">
+                <div class="container-fluid" style="height: 50px;">
+                    <a class="brand">
+                        <small><i class="icon-leaf"></i> 医疗信息系统-病人端</small>
+                    </a>
+        
+                    <ul class="nav ace-nav pull-right">
+        
+                        <li class="light-blue user-profile">
+                            <a class="user-menu dropdown-toggle" href="javascript:;" data-toggle="dropdown">
+                                <img alt="LRJ" src="/patient/image/avatar.jpg" class="nav-user-photo" style="height: 40px;">
+                                <span id="user_info"><small>Welcome</small> jxl</span>
+                                <i class="icon-caret-down"></i>
+                            </a>
+                            <ul id="user_menu" class="pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-closer">
+        
+        
+                                <li><a href="/logout"><i class="icon-off"></i> 退出</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="sidebar">
+            <div id="sidebar-shortcuts">
+        
+                <div id="sidebar-shortcuts-large">
+        
+                    <button class="btn btn-small btn-success"><i class="icon-signal"></i></button>
+        
+                    <button class="btn btn-small btn-info"><i class="icon-pencil"></i></button>
+        
+                    <button class="btn btn-small btn-warning"><i class="icon-group"></i></button>
+        
+                    <button class="btn btn-small btn-danger"><i class="icon-cogs"></i></button>
+        
+                </div>
+        
+                <div id="sidebar-shortcuts-mini">
+        
+                    <span class="btn btn-success"></span>
+        
+                    <span class="btn btn-info"></span>
+        
+                    <span class="btn btn-warning"></span>
+        
+                    <span class="btn btn-danger"></span>
+        
+                </div>
+        
+            </div><!-- #sidebar-shortcuts -->
+        
+        
+        
+            <ul class="nav nav-list">
+        
+                <li>
+    
+                    <a href="/patient/myDetail?pid=<%=pid%>&hid=<%=hid%>" >
+        
+                        <i class="icon-picture"></i>
+        
+                        <span>我的信息</span>
+        
+                    </a>
+        
+                </li>
+        
+        
+                <li>
+        
+                    <a href="/patient/selectKeshi?pid=<%=pid%>&hid=<%=hid%>">
+        
+                        <i class="icon-th"></i>
+        
+                        <span>问诊</span>
+        
+                    </a>
+        
+                </li>
+        
+                <li>
+        
+                    <a href="/patient/giveAuthority?pid=<%=pid%>&hid=<%=hid%>" >
+        
+                        <i class="icon-th"></i>
+        
+                        <span>链上就诊信息</span>
+        
+                    </a>
+        
+                </li>
+                <li>
+                    <a href="/patient/yaofang?pid=<%=pid%>&hid=<%=hid%>" >
+        
+                        <i class="icon-th"></i>
+        
+                        <span>药房</span>
+        
+                    </a>
+        
+                </li>
+                <li class="active">
+                    <a href="/patient/wishList?pid=<%=pid%>&hid=<%=hid%>" >
+        
+                        <i class="icon-th"></i>
+        
+                        <span>收藏</span>
+        
+                    </a>
+        
+                </li>
+                <li>
+                    <a href="/patient/myOrders?pid=<%=pid%>&hid=<%=hid%>" >
+        
+                        <i class="icon-th"></i>
+        
+                        <span>我的订单</span>
+        
+                    </a>
+                </li>
+                <li>
+                    <a href="/patient/mybinli?pid=<%=pid%>&hid=<%=hid%>" >
+        
+                        <i class="icon-th"></i>
+        
+                        <span>我的病历</span>
+        
+                    </a>
+                </li>
+                <li>
+                    <a href="/patient/myWallet?pid=<%=pid%>&hid=<%=hid%>" >
+        
+                        <i class="icon-th"></i>
+        
+                        <span>钱包</span>
+        
+                    </a>
+                </li>
+        
+        
+        
+            </ul><!--/.nav-list-->
+    
+        
+            <div id="sidebar-collapse"><i class="icon-double-angle-left"></i></div>
+        </div>
+        <div id="main-content" class="clearfix">
+            <div id="page-content" class="clearfix" style="margin-top: 45px;">
+             <div class="page-header position-relative">
+              <h1 style="color: #2679b5;">病人端<small><i class="icon-double-angle-right"></i> 收藏</small></h1>
+            </div>
+            <input type="hidden" name="pid" value="<%=pid%>">
+			<input type="hidden" name="hid" value="<%=hid%>">
+            <button class="btn btn-success" onclick="deleteWish()"><i class="icon-trash icon-4x icon-only">delete</i></button>
+            <ul>
+                
+                  <%wish_medicine.forEach(function(item){%>
+
+                    <li class="imglist">
+
+                        <a href="/patient/medicineDetail?mid=<%=item.mid%>&pid=<%=pid%>&hid=<%=hid%>">
+                            <label><input type="checkbox" class="checkb" value="<%=item.wish_id%>"><span class="lbl"></span></label>
+                        <img src="/medicinePIc/<%=item.m_picture%>"  alt="" />
+                        <div class="right">
+                            <p><%=item.m_name%></p>
+                            <span class="red"><%=item.m_price%></span>
+                        
+                            <!-- <input type="checkbox" /> -->
+                        </div>
+                        </a>
+                    </li>
+                    <%})%>
+            
+            </ul>
+        </div>
+        </div>
+        <script type="text/javascript">
+
+
+            function deleteWish() {
+                
+
+               
+
+                var pid =parseInt( $('input[name = "pid"]').val());
+				var hid = parseInt($('input[name = "hid"]').val())
+                var result="";
+                var count=0;
+                $(".checkb").each(function(){
+                    if($(this).is(':checked')){
+                        result+=$(this).val()+",";
+                        count++;
+                    }else{}
+                });
+                if(!confirm("确定删除这"+count+"件想要的吗?")){
+                    return;
+                }
+                window.location.href= "/patient/delWish?tag="+result+"&pid="+pid+"&hid="+hid;
+                
+            
+            }
+           
+         </script>
+    </body>
+</html>

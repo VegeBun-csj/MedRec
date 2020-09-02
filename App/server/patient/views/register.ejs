@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <!-- <meta content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=no" name="viewport" />
+    <meta content="Semantic-UI-Forest, collection of design, themes and templates for Semantic-UI." name="description" />
+    <meta content="Semantic-UI, Theme, Design, Template" name="keywords" />
+    <meta content="PPType" name="author" />
+    <meta content="#ffffff" name="theme-color" />
+     --><title>Hospital XYZ</title>
+    <link rel="stylesheet" type="text/css" href="/patient/semantic.min.css" />
+    <link rel="stylesheet" type="text/css" href="/patient/default.css" />
+    <link rel="stylesheet" type="text/css" href="/patient/pandoc-code-highlight.css" />
+    <link rel="stylesheet" type="text/css" href="/patient/style_02.css">
+    <script src="/patient/jquery.min.js"></script>
+ 
+</head>
+<body>
+
+<div class="ui center aligned grid">
+    <div class="ui container">
+        <h1 class="ui huge header">
+          请注册
+        </h1>
+        <!-- action="/signin" method="POST" -->
+        <form class="ui large form" action="/register" method="POST">
+            <div class="field">
+                <div class="ui left icon input">
+                    <i class="user icon"></i><input name="username" placeholder="username" type="text" />
+                </div>
+            </div>
+            <div class="field">
+                <div class="ui left icon input">
+                    <i class="lock icon"></i><input name="password" placeholder="password" type="password" />
+                </div>
+            </div>
+            <div class="field">
+                <div class="ui left icon input">
+                    hospital1:<input type="radio" name="work" value="1"/>
+                    hospital2:<input type="radio" name="work" value="2"/>
+                </div>
+            </div>
+            <div>
+                <button class="ui fluid large primary submit button" id="toRegister" onclick='register()'>Sign in</button>
+            </div>
+        </form>
+
+        <div> <a id="goBack" href="/goLogin">已有帐号，去登录</a> </div>
+
+    </div>
+</div>
+  <script src="/patient/jquery.min.js"></script>
+        <script src="/patient/webuploader/webuploader.js"></script>
+        <script src="/patient/js/bootstrap.min.js"></script>
+        <script src="/patient/js/bootbox.min.js"></script>
+		  <script src="/patient/semantic.min.js"></script>
+    <script>
+      $(document)
+        .ready(function() {
+          $('.ui.checkbox').checkbox();
+          $('.ui.form')
+            .form({
+              fields: {
+                username: {
+                  identifier  : 'username',
+                  rules: [
+                    {
+                      type   : 'empty',
+                      prompt : 'Please enter your username'
+                    }
+                  ]
+                },
+				 work: {
+                  identifier  : 'work',
+                  rules: [
+                    {
+                      type   : 'empty',
+                      prompt : 'Please enter your work'
+                    }
+                  ]
+                },
+                password: {
+                  identifier  : 'password',
+                  rules: [
+                    {
+                      type   : 'empty',
+                      prompt : 'Please enter your password'
+                    },
+                    {
+                      type   : 'length[6]',
+                      prompt : 'Your password must be at least 6 characters'
+                    }
+                  ]
+                }
+              },
+              inline: true,
+              on: 'blur'
+            })
+          ;
+        })
+      ;
+    </script>
+
+</body>
+</html>

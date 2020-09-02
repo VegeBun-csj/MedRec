@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" type="text/css" href="/patientcss/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/patientcss/bootstrap-responsive.min.css"/>
+
+    <link rel="stylesheet" type="text/css"  href="/patientcss/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/patientcss/ace.min.css"/>
+
+    <link rel="stylesheet" type="text/css" href="/patientcss/ace-skins.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/patientcss/ace-responsive.min.css" />
+    <link rel="stylesheet" type="text/css" href="/patientwebuploader/webuploader.css" />
+    <script src="/patientjquery.min.js"></script>
+    <script src="/patientjs/bootstrap.min.js"></script>
+    <script src="/patientjs/bootbox.min.js"></script>
+    <style type="text/css">
+        body,html{
+            width: 100%;
+            height: 100%;
+            background: #fff;
+        }
+        #sidebar{
+        left: 0;
+        margin-top: 0;
+    }
+ 
+    .blue{
+        color:blue;
+    }
+
+        li{
+            list-style: none;
+        }
+
+        .main{margin-left: 190px;padding: 8px 20px 24px;}
+        .main ul{overflow: hidden;}
+        .main li{width: 25%;padding:0 2.5%;box-sizing: border-box;float:left;margin-bottom: 30px;}
+        /*.main li p{font-size: 15px;color:#666;height: 36px;overflow: hidden;text-overflow: -o-ellipsis-lastline;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}*/
+        .main li:hover,
+        :focus {
+            background-color: #f5f5f5;
+            box-shadow: 2px 2px 5px #999;
+        }
+        .main li a{display:inline;}
+        .main li span{color:#d72439;line-height: 40px;}
+        .main li img{width: 100%;}
+        .main h5{line-height: 40px;padding-left: 2%;box-sizing: border-box;font-size: 20px;}
+
+
+
+    </style>
+</head>
+<body>
+   <div class="navbar navbar-inverse">
+    <div class="navbar-inner" style="background:#0099CC;">
+        <div class="container-fluid">
+            <a class="brand">
+                <small><i class="icon-leaf"></i> 医疗信息系统-病人端</small>
+            </a>
+
+            <ul class="nav ace-nav pull-right">
+
+                <li class="light-blue user-profile">
+                    <a class="user-menu dropdown-toggle" href="javascript:;" data-toggle="dropdown">
+                        <img alt="LRJ" src="image/avatar.jpg" class="nav-user-photo">
+                        <span id="user_info"><small>Welcome</small> jxl</span>
+                        <i class="icon-caret-down"></i>
+                    </a>
+                    <ul id="user_menu" class="pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-closer">
+
+
+                        <li><a href="/logout"><i class="icon-off"></i> 退出</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="sidebar">
+    <div id="sidebar-shortcuts">
+
+        <div id="sidebar-shortcuts-large">
+
+            <button class="btn btn-small btn-success"><i class="icon-signal"></i></button>
+
+            <button class="btn btn-small btn-info"><i class="icon-pencil"></i></button>
+
+            <button class="btn btn-small btn-warning"><i class="icon-group"></i></button>
+
+            <button class="btn btn-small btn-danger"><i class="icon-cogs"></i></button>
+
+        </div>
+
+        <div id="sidebar-shortcuts-mini">
+
+            <span class="btn btn-success"></span>
+
+            <span class="btn btn-info"></span>
+
+            <span class="btn btn-warning"></span>
+
+            <span class="btn btn-danger"></span>
+
+        </div>
+
+    </div><!-- #sidebar-shortcuts -->
+
+
+
+    <ul class="nav nav-list">
+
+
+        <li>
+
+            <a href="/patient/myDetail?pid=<%=pid%>" >
+
+                <i class="icon-picture"></i>
+
+                <span>我的信息</span>
+
+            </a>
+
+        </li>
+
+
+        <li class="active">
+
+            <a href="/patient/watchDoctor?pid=<%=pid%>">
+
+                <i class="icon-th"></i>
+
+                <span>问诊</span>
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a href="/patient/giveAuthority?pid=<%=pid%>" >
+
+                <i class="icon-th"></i>
+
+                <span>链上就诊信息</span>
+
+            </a>
+
+        </li>
+        <li>
+            <a href="/patient/yaofang?pid=<%=pid%>" >
+
+                <i class="icon-th"></i>
+
+                <span>药房</span>
+
+            </a>
+
+        </li>
+        <li>
+            <a href="/patient/wishList?pid=<%=pid%>" >
+
+                <i class="icon-th"></i>
+
+                <span>收藏</span>
+
+            </a>
+
+        </li>
+        <li>
+            <a href="/patient/myOrders?pid=<%=pid%>" >
+
+                <i class="icon-th"></i>
+
+                <span>我的订单</span>
+
+            </a>
+        </li>
+        <li>
+            <a href="/patient/mybinli?pid=<%=pid%>" >
+
+                <i class="icon-th"></i>
+
+                <span>我的病历</span>
+
+            </a>
+        </li>
+        <li>
+            <a href="/patient/myWallet?pid=<%=pid%>" >
+
+                <i class="icon-th"></i>
+
+                <span>钱包</span>
+
+            </a>
+        </li>
+
+
+
+
+    </ul><!--/.nav-list-->
+
+
+
+    <div id="sidebar-collapse"><i class="icon-double-angle-left"></i></div>
+</div>
+<div class="main">
+    <h5 style="margin-top: 45px;">可选医院</h5>
+    <input type="hidden" name="sid" >
+    <ul  class="pailie" >
+        <input type="hidden" id="pid" value="<%=pid%>" name="pid">
+        <li>
+            <a href="/patient/selectKeshi?pid=<%=pid%>&hid=<%=hospital[0].hid%>">
+                <div class="img"></div><img src="image/huaian1.jpg"  alt="" />
+                <p><%=hospital[0].hname%></p>
+                <span><%=hospital[0].hlevel%></span> <br>
+                <span>地址: <%=hospital[0].haddress%></span>
+            </a>
+        </li>
+        <li>
+            <a href="/patient/selectKeshi?pid=<%=pid%>&hid=<%=hospital[1].hid%>">
+                <div class="img"></div><img src="image/huaian2.png"  alt="" />
+                <p><%=hospital[1].hname%></p>
+                <span><%=hospital[1].hlevel%></span> <br>
+                <span>地址: <%=hospital[1].haddress%></span>
+            </a>
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>

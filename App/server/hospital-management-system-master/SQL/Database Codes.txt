@@ -1,0 +1,181 @@
+###Table Structure for User and Pre-User
+
+CREATE TABLE user(
+    id INT(6) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(20) NOT NULL,
+    password CHAR(60) NOT NULL,
+    user_type VARCHAR(20) NOT NULL
+);
+
+###sets the default id value to 10001
+ALTER TABLE user AUTO_INCREMENT=10001; 
+
+CREATE TABLE pre_user(
+    id INT(6) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(20) NOT NULL,
+    password CHAR(60) NOT NULL,
+    user_type VARCHAR(20) NOT NULL
+);
+
+###sets the default id value to 10001
+ALTER TABLE pre_user AUTO_INCREMENT=10001;
+
+### Trigger to insert value from pre-user to user after checking user_type
+DELIMITER $$
+CREATE TRIGGER user_type_check 
+    AFTER INSERT ON pre_user
+    FOR EACH ROW 
+BEGIN
+	IF (NEW.user_type='Staff' OR NEW.user_type='Nurse' OR NEW.user_type='Doctor' OR NEW.user_type='Patient') THEN
+    INSERT INTO user
+   ( username,
+     password,
+     user_type)
+   VALUES
+   ( NEW.username,
+     NEW.password,
+     NEW.user_type );
+     END IF;
+     
+END; $$
+DELIMITER ;
+
+
+### Trigger to delete from pre_user after deleting user from user table
+DELIMITER $$
+CREATE TRIGGER delete_on_pre_user 
+    AFTER DELETE ON user
+    FOR EACH ROW 
+BEGIN
+	DELETE from pre_user 
+    WHERE pre_user.username = old.username;
+END; $$
+DELIMITER ;
+
+### Required sample staff/admin entry to the system
+INSERT INTO pre_user (username, password, user_type) VALUES('fahim', '123456', 'Staff');
+
+###Table Structure for Doctor
+CREATE TABLE doctor(
+    did INT(6) UNSIGNED NOT NULL PRIMARY KEY,
+    fname VARCHAR(20) NOT NULL,
+    mname VARCHAR(20),
+    lname VARCHAR(20) NOT NULL,
+    bdate DATE NOT NULL,
+    adate DATE NOT NULL,
+    gender VARCHAR(20) NOT NULL,
+    rid INT(6) UNSIGNED NOT NULL,
+    assigned_ward INT(6) UNSIGNED NOT NULL,
+    FOREIGN KEY(rid) REFERENCES doctor(did)    
+);
+
+###Table Structure for Education Qualification
+CREATE TABLE education_qualification(
+    did INT(6) UNSIGNED NOT NULL,
+    degree VARCHAR(20) NOT NULL,
+    board VARCHAR(20) NOT NULL,
+    year VARCHAR(20) NOT NULL,
+    cgpa VARCHAR(20) NOT NULL,
+    position VARCHAR(20) NOT NULL
+);
+
+###Table Structure for Experience
+CREATE TABLE experience(
+    did INT(6) UNSIGNED NOT NULL,
+    title VARCHAR(20) NOT NULL,
+    dfrom DATE,
+    dto DATE,
+    organization VARCHAR(20) NOT NULL
+);
+
+###Table Structure for Nurse
+CREATE TABLE nurse(
+    nid INT(6) UNSIGNED NOT NULL PRIMARY KEY,
+    fname VARCHAR(20) NOT NULL,
+    mname VARCHAR(20),
+    lname VARCHAR(20) NOT NULL,
+    bdate DATE NOT NULL,
+    adate DATE NOT NULL,
+    gender VARCHAR(20) NOT NULL,
+    sid INT(6) UNSIGNED NOT NULL,
+    assigned_ward INT(6) UNSIGNED NOT NULL,
+    FOREIGN KEY(sid) REFERENCES nurse(nid)    
+);
+
+
+
+###Table Structure for Patient
+CREATE TABLE patient(
+    pid INT(6) UNSIGNED NOT NULL PRIMARY KEY,           
+    fname VARCHAR(20) NOT NULL,                                             
+    mname VARCHAR(20),                                  
+    lname VARCHAR(20) NOT NULL,                                     
+    bdate DATE NOT NULL,                                                            
+    adate DATE NOT NULL,                                            
+    mblnoOne VARCHAR(20),                                               
+    mblnoTwo VARCHAR(20),                                                   
+    gender VARCHAR(20) NOT NULL,                                                    
+    streetno VARCHAR(20) NOT NULL,                                                      
+    streetname VARCHAR(20) NOT NULL,                                                                        
+    area VARCHAR(20) NOT NULL,                                              
+    thana VARCHAR(20) NOT NULL,                                                 
+    district VARCHAR(20) NOT NULL,                                                          
+    pstreetno VARCHAR(20) NOT NULL,                                                         
+    pstreetname VARCHAR(20) NOT NULL,                                               
+    parea VARCHAR(20) NOT NULL,
+    pthana VARCHAR(20) NOT NULL,
+    pdistrict VARCHAR(20) NOT NULL,
+    job VARCHAR(20) NOT NULL,
+    deposit INT,
+    admitted_ward INT(6) UNSIGNED NOT NULL    
+);
+
+###Table Structure for Bill
+create table bill(
+	id int(6) unsigned not null unique,
+	foreign key(id) references patient(pid)
+        on delete cascade,
+    total_payable int(40),
+    paid int(20)
+);
+
+### View for Due Bill of a Patient
+create view bill_due as
+select id,total_payable - paid as due
+from bill;
+
+### Trigger for Inserting New Patient into Bill Table
+DELIMITER $$
+CREATE TRIGGER patient_bill 
+    AFTER insert ON patient
+    FOR EACH ROW 
+BEGIN
+    insert into bill (id,total_payable,paid) values (new.pid,0,0);
+END; $$
+DELIMITER ;
+
+### Trigger for Deleting user from Patient table after deleting from User
+DELIMITER $$
+CREATE TRIGGER user_delete 
+    AFTER delete ON user
+    FOR EACH ROW 
+BEGIN
+    delete from patient where patient.pid = old.id;
+END; $$
+DELIMITER ;
+
+
+
+###Table Structure for Medicine
+CREATE TABLE medicine(
+    mid INT(6) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(20) NOT NULL unique,
+    type VARCHAR(20) NOT NULL,
+    u_price INT NOT NULL,
+    quantity INT NOT NULL,
+    mdate DATE NOT NULL,
+    edate DATE NOT NULL
+);
+
+###sets the default id value to 10001
+ALTER TABLE medicine AUTO_INCREMENT=10001;

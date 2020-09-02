@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+</head>
+
+<body>
+    <h1>患者客户端登陆成功</h1>
+    <form action="/seleHistory" method="post">
+        <h1>患者客户端病历信息查询入口（可查询就诊医院上传的病历的ipfs地址）</h1>
+        请输入就诊的医院名 <input type="text" id="_hospital" name="hospital">
+        请输入就诊的医生名 <input type="text" id="_doctor" name="doctor">
+        请输入您的身份证号 <input type="text" id="_idnum" name="idnum">
+        <input type="button" value="查询患者最近的病历" onclick="sele_Record()">
+        <input type="submit" value="查询历史病历">
+    </form>
+
+
+    <br>
+
+    根据指定医院和医生查询结果显示如下
+    <br>
+    <!-- 注意，这里拿到的就是我们从链上取到并解密之后的ipfs地址hash，直接拿这个值就可以去ipfs查询了 -->
+    查询到的最新的病历信息结果是:
+    <div id="message"></div>
+    <br>
+    <br>
+    <!--  查询到的历史病历是：
+    <div id="history"></div>
+    <br>
+    <br> -->
+
+
+    <h1>开始赋予第三方医院（火神山医院）的医生查询权限</h1>
+    <!-- 这个部分就是患者和医院B之间的交易 -->
+    <div>
+        允许查看的医院名<input type="text" id="hospital">
+        允许查看的医生名<input type="text" id="doctor">
+        身份证号码 <input type="text" id="idnum">
+        IPFS hash数据 <input type="text" id="record">
+        <input type="submit" value="提交" onclick="add_authority()">
+    </div>
+    查询状态：
+    <div id="state"></div>
+
+</body>
+
+<script>
+
+    //查询数据
+    function sele_Record() {
+        let _hospital = $('#_hospital').val();
+        let _doctor = $('#_doctor').val();
+        let _idnum = $('#_idnum').val();
+        $.ajax({
+            type: 'get',
+            url: 'seleRecord',
+            dataType: 'json',
+            data: {
+                hospital: _hospital,
+                doctor: _doctor,
+                idnum: _idnum
+            },
+            complete: function (xhr) {
+                let obj = JSON.parse(xhr.responseText);
+                console.log(obj.data);
+                console.log(obj.success);
+                let data = obj.data;
+                console.log(`前台的接收数据${data}`);
+                console.log('=======================');
+                console.log(typeof data);
+                if (obj.success && data) {
+                    $('#message').text(data);
+                } else {
+                    $('#message').text(data);
+                }
+            }
+        })
+    }
+
+
+
+    function add_authority() {
+        let _hospital = $('#hospital').val();
+        let _doctor = $('#doctor').val();
+        let _idnum = $('#idnum').val();
+        let _record = $('#record').val();
+        $.ajax({
+            type: 'get',
+            url: 'authority',
+            dataType: 'json',
+            data: {
+                hospital: _hospital,
+                doctor: _doctor,
+                idnum: _idnum,
+                record: _record
+            },
+            complete: function (xhr) {
+                let obj = JSON.parse(xhr.responseText);
+                console.log(obj.data);
+                console.log(obj.success);
+                let data = obj.data;
+                console.log(`前台的接收数据${data}`);
+                console.log('=======================');
+                console.log(typeof data);
+                /*    let dataobj = JSON.parse(data)
+                   //注意dataobj是一个数组对象，里面有我们查询到的历史数据对象
+                   console.log(dataobj instanceof Array);
+                   console.log(dataobj); */
+                if (obj.success && data) {
+                    $('#state').text(data);
+
+                } else {
+                    $('#state').text(data);
+                }
+            }
+        })
+    }
+
+</script>
+
+
+</html>

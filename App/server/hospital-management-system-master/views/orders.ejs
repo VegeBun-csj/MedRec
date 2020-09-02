@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    --><title>医生工作站</title>
+    <link rel="stylesheet" type="text/css" href="semantic.min.css" />
+    <link rel="stylesheet" type="text/css" href="default.css" />
+    <link rel="stylesheet" type="text/css" href="pandoc-code-highlight.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="style_02.css"> -->
+    <script src="jquery.min.js"></script>
+</head>
+
+
+<body>
+
+<!-- <div class="ui horizontal divider">or</div> -->
+<div class="ui container">
+    <form class="ui form segment" action="/orders" method="post">
+        <h1> 病人： </h1>
+        <div class="three fields">
+            <div class="field">
+                <label>病人姓名：</label>
+                <input  value="<%=patient[0].name%>" readonly="readonly" type="text">
+            </div>
+            <div class="field">
+                <label>病人编号：</label>
+                <input  value="<%=patient[0].id%>" readonly="readonly" type="text">
+            </div>
+            <div class="field">
+                <label>病人科室：</label>
+                <input  value="<%=patient[0].diagnosis%>" readonly="readonly" type="text">
+            </div>
+        </div>
+        <h1> 医嘱： </h1>
+        <h3><%=test %></h3>
+        <div> <a href="/addorders">新开医嘱</a> </div>
+        <table><tr style='background-color:#006633'>
+                <th width="150" style="color:#ffff99">ID</th>
+                <th width="150" style="color:#ffff99">Update</th>
+                <th width="150" style="color:#ffff99">Username</th>
+                <th width="150" style="color:#ffff99">Usertype</th>
+                <th width="150" style="color:#ffff99">Details</th></tr>
+            <% if (order) { %>
+            <% order.forEach(function(user){ %>
+            <tr>
+                <th width="150"><a href="/orderdetail?id=<%= user.id %>&pid=<%= pid %>"><%= user.id %></th>
+                <th width="150"><a href="/orderdetail?id=<%= user.id %>&pid=<%= pid %>"><%= user.patient_id %></th>
+                <th width="150"><a href="/orderdetail?id=<%= user.id %>&pid=<%= pid %>"><%= user.item_name %></th>
+                <th width="150"><a href="/orderdetail?id=<%= user.id %>&pid=<%= pid %>"><%= user.description %></th>
+                <th width="150"><a href="/orderdetail?id=<%= user.id %>&pid=<%= pid %>"><%= user.pinci %></th>
+                <th width="150"><a href="/orderdetail?id=<%= user.id %>&pid=<%= pid %>"><%= user.cost %></th>
+                <th width="150"><a href="/orderdetail?id=<%= user.id %>&pid=<%= pid %>"><%= user.status %></th>
+            </tr>
+            <% }) %>
+            <% } %>
+        </table>
+    </form>
+    </br>
+
+
+    <div> <a href="/profile">Go back</a> </div>
+</div>
+
+
+<script src="semantic.min.js"></script>
+
+<script>
+    $('.ui.form')
+        .form({
+            fields: {
+                name       : 'empty',
+                gender     : 'empty',
+                age        : 'empty',
+                contact    : 'empty',
+                address    : 'empty',
+                registar   : 'empty',
+                ward       : 'empty',
+                speciality : 'empty'
+                /*username : 'empty',
+                password : ['minLength[6]', 'empty'],
+                speciality   : ['minCount[2]', 'empty'],
+                terms    : 'checked'*/
+            }
+        })
+    ;
+</script>
+
+
+</body>
+</html>
+
+
+

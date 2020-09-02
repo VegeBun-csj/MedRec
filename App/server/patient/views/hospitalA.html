@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>登陆成功,欢迎使用雷神山医院(hospitalA)医疗系统</h1>
+    <h1>开始上传就诊患者的病历</h1>
+    <form action="/add_record" method="post">
+        患者名 <input type="text" name="patient"> <br>
+        患者身份证号 <input type="text" name="idnum"> <br>
+         <input type="hidden" name="hospital" value="雷神山医院"> <br>
+        <!-- 此处还应有医生的用户名信息，但是通过cookie传到后台接受的 -->
+        <!-- 这里的数据在实际的实现中是通过IPFS的接口上传文件，然后IPFS返回hash得到的，这里只是作为模拟使用，直接填写 -->
+        IPFS hash数据 <input type="text" name="record">  <br>
+        <input type="submit" value="病历数据上链">  <br>
+    </form>
+</body>
+</html>

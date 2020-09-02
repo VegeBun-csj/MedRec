@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <!-- <meta content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=no" name="viewport" />
+    <meta content="Semantic-UI-Forest, collection of design, themes and templates for Semantic-UI." name="description" />
+    <meta content="Semantic-UI, Theme, Design, Template" name="keywords" />
+    <meta content="PPType" name="author" />
+    <meta content="#ffffff" name="theme-color" />
+     --><title>Hospital XYZ</title>
+    <link rel="stylesheet" type="text/css" href="/hosp/semantic.min.css" />
+    <link rel="stylesheet" type="text/css" href="/hosp/default.css" />
+    <link rel="stylesheet" type="text/css" href="/hosp/pandoc-code-highlight.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="style_02.css"> -->
+    <script src="/hosp/jquery.min.js"></script>
+</head>
+
+
+<body>
+
+<!-- <div class="ui horizontal divider">or</div> -->
+
+
+<!-- <div class="ui horizontal divider">or</div> -->
+
+<div class="ui container">
+    <h1> 办理住院流程： </h1>
+    <form class="ui form segment" action="/newPatient" method="post">
+        <div class="three fields">
+
+            <div class="field">
+                <h3>挂号--------------------->①---------------------></h3>
+            </div>
+
+            <div class="field">
+                <h3>门诊登记------------------->②-------------------></h3>
+            </div>
+
+            <div class="field">
+                <h3>医生下达住院通知</h3>
+            </div>
+        </div>
+    </form>
+    </br>
+    <h3><%=test %></h3>
+    <div> <a href="/profile">返回首页</a> </div>
+    <table><tr style='background-color:#006633'>
+            <th width="150" style="color:#ffff99">病人编号</th>
+            <th width="150" style="color:#ffff99">入院登记</th>
+            <th width="150" style="color:#ffff99">病人姓名</th>
+            <th width="150" style="color:#ffff99">病人病情</th>
+            <th width="150" style="color:#ffff99">年龄</th></tr>
+        <% if (patient) { %>
+        <% patient.forEach(function(user){ %>
+        <tr>
+            <th width="150"><%= user.id %></th>
+            <th width="150"><a href="/inp_adt1?id=<%= user.id %>">办理住院</a></th>
+            <th width="150"><%= user.username %></th>
+            <th width="150"><%= user.symptoms %></th>
+            <th width="150"><%= user.password %></th>
+        </tr>
+        <% }) %>
+        <% } %>
+    </table>
+
+    <div> <a href="/profile">返回首页</a> </div>
+</div>
+
+<script src="/hosp/semantic.min.js"></script>
+<script src="/hosp/script.js"></script>
+<script>
+    function act1(){
+        document.frm.action = "/inp_adt1";
+        document.frm.submit;
+    }
+    function act2(){
+        document.frm.action = "/inp_adt2";
+        document.frm.submit;
+    }
+</script>
+
+</body>
+</html>
+
+
+

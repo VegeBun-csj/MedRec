@@ -1,0 +1,9 @@
+{
+    "connection_file": "connection-org1.json",
+    "Admin": "admin",
+    "AdminSecret": "adminpw",
+    "AdminUser":"admin_patient",
+    "walletName":"wallet-Org1",
+    "orgMSPID": "Org1MSP",
+    "gatewayDiscovery": { "enabled": true, "asLocalhost": true }
+  }

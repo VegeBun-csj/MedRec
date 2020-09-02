@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <!-- <meta content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=no" name="viewport" />
+    <meta content="Semantic-UI-Forest, collection of design, themes and templates for Semantic-UI." name="description" />
+    <meta content="Semantic-UI, Theme, Design, Template" name="keywords" />
+    <meta content="PPType" name="author" />
+    <meta content="#ffffff" name="theme-color" />
+     --><title>Hospital XYZ</title>
+   <link rel="stylesheet" type="text/css" href="/hosp/semantic.min.css" />
+    <link rel="stylesheet" type="text/css" href="/hosp/default.css" />
+    <link rel="stylesheet" type="text/css" href="/hosp/pandoc-code-highlight.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="style_02.css"> -->
+    <script src="/hosp/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="ui center aligned grid">
+      <div class="ui container">
+        <!-- <h1 class="ui huge header">
+          Fill up the form 
+        </h1> -->
+        <h1 style="text-align: center">Fill up the form</h1>
+
+        <form class="ui large form">
+
+          <div class="field">
+            <div class="ui left icon input">
+              <input name="name" placeholder="type your name here" type="text" />
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="ui left icon input">
+              <input name="name" placeholder="type your age here" type="text" />
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="ui left icon input">
+              <input name="name" placeholder="type your address here" type="text" />
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="ui left icon input">
+              <textarea name="description" rows="6" cols="37" placeholder="Write about your problems in here"></textarea>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="ui left icon input">
+              <input name="name" placeholder="type your contact number" type="text" />
+            </div>
+          </div>
+
+          <!-- <div class="field">
+            <div class="ui left icon input">
+              </i><input name="password" placeholder="Password" type="password" />
+            </div>
+          </div> -->
+
+          <!-- <div class="field">
+            <div class="ui checkbox">
+              <input class="hidden" tabindex="0" type="checkbox" /><label>Remember me</label>
+            </div>
+          </div> -->
+
+          <div>
+            <a class="ui fluid large primary submit button" href="#">Confirm</a>
+          </div>
+
+        </form>
+
+        <div> <a id="goBack" href="index.html">Go back</a> </div>
+
+      </div>
+    </div>
+
+
+    <script src="/hosp/semantic.min.js"></script>
+
+
+    <!-- <style type="text/css">
+      body {
+        background-color: #eee;
+      }
+      
+      .ui.container {
+        margin-top: 6em;
+        max-width: 22em !important;
+      }
+    </style> -->
+
+
+    <script>
+      $(document)
+        .ready(function() {
+          $('.ui.checkbox').checkbox();
+          $('.ui.form')
+            .form({
+              fields: {
+                email: {
+                  identifier  : 'email',
+                  rules: [
+                    {
+                      type   : 'empty',
+                      prompt : 'Please enter your e-mail'
+                    },
+                    {
+                      type   : 'email',
+                      prompt : 'Please enter a valid e-mail'
+                    }
+                  ]
+                },
+                password: {
+                  identifier  : 'password',
+                  rules: [
+                    {
+                      type   : 'empty',
+                      prompt : 'Please enter your password'
+                    },
+                    {
+                      type   : 'length[6]',
+                      prompt : 'Your password must be at least 6 characters'
+                    }
+                  ]
+                }
+              },
+              inline: true,
+              on: 'blur'
+            })
+          ;
+        })
+      ;
+    </script>
+
+  </body>
+</html>

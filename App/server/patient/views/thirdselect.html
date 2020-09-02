@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+</head>
+
+<body>
+    <h1>第三方医院医生查询界面</h1>
+    <h1>开始查询病人在其他医院的病历</h1>
+
+    患者名 <input type="text" id="patient">
+    患者身份证号 <input type="text" id="idnum">
+    <!-- 目前就诊医院 -->
+    <input type="hidden" id="hospital" value="火神山医院">
+    <input type="button"  onclick="sele_Record()" value="即将查询该患者在其他医院的病历">
+
+    <br>
+    <br>
+    病人在医院A的病历（ipfs hash地址）查询结果是
+    <div id="message"></div>
+</body>
+
+<script>
+    function sele_Record() {
+        let hospital = $('#hospital').val();
+        let idnum = $('#idnum').val();
+        let patient = $('#patient').val();
+        $.ajax({
+            type: 'get',
+            url: 'thirdsele',
+            dataType: 'json',
+            data: {
+                hospital: hospital,
+                patient: patient,
+                idnum: idnum
+            },
+            complete: function (xhr) {
+                let obj = JSON.parse(xhr.responseText);
+                console.log(obj.data);
+                console.log(obj.success);
+                let data = obj.data;
+                console.log(`前台的接收数据${data}`);
+                if (obj.success && data) {
+                    $('#message').text(data);
+                } else {
+                    $('#message').text(data);
+                }
+            }
+        })
+    }
+
+
+</script>
+
+
+</html>

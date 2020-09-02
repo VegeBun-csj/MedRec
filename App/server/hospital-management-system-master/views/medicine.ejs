@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <!-- <meta content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=no" name="viewport" />
+    <meta content="Semantic-UI-Forest, collection of design, themes and templates for Semantic-UI." name="description" />
+    <meta content="Semantic-UI, Theme, Design, Template" name="keywords" />
+    <meta content="PPType" name="author" />
+    <meta content="#ffffff" name="theme-color" />
+     --><title>Hospital XYZ</title>
+    <link rel="stylesheet" type="text/css" href="semantic.min.css" />
+    <link rel="stylesheet" type="text/css" href="default.css" />
+    <link rel="stylesheet" type="text/css" href="pandoc-code-highlight.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="style_02.css"> -->
+    <script src="jquery.min.js"></script>
+</head>
+
+
+<body>
+
+<!-- <div class="ui horizontal divider">or</div> -->
+
+<div class="ui container">
+
+    <form class="ui form segment" action="/medicine" method="POST">
+
+        <h1>Patient list</h1>
+        <div class="three fields">
+            <div class="field">
+                <a href="/profile">返回首页</a>
+            </div>
+            <div class="field">
+                <a href="/addmed">药品入库</a>
+            </div>
+            <div class="field">
+                销毁编号为：<input type="number" name="mid" value="">的药品
+                <button class="ui primary submit button">销毁</button>
+            </div>
+
+        </div>
+
+
+
+        <table border="1"><tr style='background-color:#006633'>
+                <th width="150" style="color:#ffff99">药品对应症状</th>
+                <th width="150" style="color:#ffff99">药品所属医院编号</th>
+                <th width="150" style="color:#ffff99">药品编号</th>
+                <th width="150" style="color:#ffff99">药品名称</th>
+                <th width="150" style="color:#ffff99">药品价格</th>
+                <th width="150" style="color:#ffff99">药品功能</th></tr>
+				 <th width="150" style="color:#ffff99">药品图片</th></tr>
+            <% if (patient) { %>
+            <% patient.forEach(function(user){ %>
+            <tr>
+                <th width="150"><a href="/medicinedetail?id=<%= user.mid %>"><%= user.m_type %></th>
+                <th width="150"><a href="/medicinedetail?id=<%= user.mid %>"><%= user.hid %></a></th>
+                <th width="150"><a href="/medicinedetail?id=<%= user.mid %>"><%= user.mid %></th>
+                <th width="150"><a href="/medicinedetail?id=<%= user.mid %>"><%= user.m_name %></th>
+                <th width="150"><a href="/medicinedetail?id=<%= user.mid %>"><%= user.m_price %></th>
+                <th width="150"><a href="/medicinedetail?id=<%= user.mid %>"><%= user.m_gongneng %></th>
+				<th width="150"><a href="/medicinedetail?id=<%= user.mid %>"><img src="/medicinePIc/<%=user.m_picture%>"></a></th>
+
+            </tr>
+            <% }) %>
+            <% } %>
+        </table>
+        <div class="ui error message"></div>
+    </form>
+
+
+</div>
+<div class="ui footer container">
+    <div class="ui divider"></div>
+    <div class="ui two column grid">
+        <div class="column">
+            <p>
+                &copy; 2020 Hospital XYZ, Welcome.
+            </p>
+        </div>
+        <div class="right floated two wide column">
+            <!--a href="#">Back to top</a -->
+        </div>
+    </div>
+</div>
+
+
+
+<script src="semantic.min.js"></script>
+
+<script>
+    $('.ui.form')
+        .form({
+            fields: {
+                name       : 'empty',
+                gender     : 'empty',
+                age        : 'empty',
+                contact    : 'empty',
+                address    : 'empty',
+                supervisor : 'empty',
+                ward       : 'empty'
+                /*speciality : 'empty'*/
+                /*username : 'empty',
+                password : ['minLength[6]', 'empty'],
+                speciality   : ['minCount[2]', 'empty'],
+                terms    : 'checked'*/
+            }
+        })
+    ;
+</script>
+
+</body>
+</html>
+
+
+

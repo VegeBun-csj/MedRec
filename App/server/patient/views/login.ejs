@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <title>Hospital XYZ</title>
+    <link rel="stylesheet" type="text/css" href="/patient/semantic.min.css" />
+    <link rel="stylesheet" type="text/css" href="/patient/default.css" />
+    <link rel="stylesheet" type="text/css" href="/patient/pandoc-code-highlight.css" />
+    <link rel="stylesheet" type="text/css" href="/patient/style_02.css">
+    <script src="/patient/jquery.min.js"></script>
+</head>
+<body>
+<div class="ui center aligned grid">
+    <div class="ui container">
+        <h1 class="ui huge header">
+           请登录
+        </h1>
+        <form class="ui large form" action="/login" method="POST">
+            <div class="field">
+                <div class="ui left icon input">
+                    <i class="user icon"></i><input name="username" placeholder="Username" type="text" />
+                </div>
+            </div>
+            <div class="field">
+                <div class="ui left icon input">
+                    <i class="lock icon"></i><input name="password" placeholder="Password" type="password" />
+                </div>
+            </div>
+            <div class="field">
+                <div class="ui left icon input">
+                    hospital1:<input type="radio" name="work" value="1"/>
+                    hospital2:<input type="radio" name="work" value="2"/>
+                </div>
+            </div>
+            <div>
+                <button class="ui fluid large primary submit button" type="submit">Sign in</button>
+              
+            </div>
+        </form>
+
+        <div> <a id="goBack" href="/goRegister">Go back</a>&nbsp&nbsp&nbsp&nbsp<a href="/goIndex">去首页</a></div>
+
+    </div>
+</div>
+<script src="/patient/jquery.min.js"></script>
+        <script src="/patient/webuploader/webuploader.js"></script>
+        <script src="/patient/js/bootstrap.min.js"></script>
+        <script src="/patient/js/bootbox.min.js"></script>
+		  <script src="/patient/semantic.min.js"></script>
+    <script>
+      $(document)
+        .ready(function() {
+          $('.ui.checkbox').checkbox();
+          $('.ui.form')
+            .form({
+              fields: {
+                username: {
+                  identifier  : 'username',
+                  rules: [
+                    {
+                      type   : 'empty',
+                      prompt : 'Please enter your username'
+                    }
+                  ]
+                },
+                password: {
+                  identifier  : 'password',
+                  rules: [
+                    {
+                      type   : 'empty',
+                      prompt : 'Please enter your password'
+                    },
+                    {
+                      type   : 'length[6]',
+                      prompt : 'Your password must be at least 6 characters'
+                    }
+                  ]
+                }
+              },
+              inline: true,
+              on: 'blur'
+            })
+          ;
+        })
+      ;
+    </script>
+</body>
+</html>

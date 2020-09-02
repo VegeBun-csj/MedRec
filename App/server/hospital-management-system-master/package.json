@@ -1,0 +1,36 @@
+{
+  "name": "demo_03",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.2",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "express-domain-middleware": "^0.1.0",
+    "express-session": "^1.15.6",
+    "formidable": "^1.2.2",
+    "fs": "0.0.1-security",
+    "js": "^0.1.0",
+    "json": "^9.0.6",
+    "moment": "^2.25.3",
+    "morgan": "^1.9.0",
+    "multer": "^1.4.2",
+    "multiparty": "^4.2.1",
+    "mysql": "^2.15.0",
+    "net": "^1.0.2",
+    "officegen": "^0.6.4",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "path": "^0.12.7",
+    "serve-favicon": "^2.5.0"
+  }
+}
