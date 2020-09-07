@@ -26,4 +26,5 @@ only start the start.sh shell
 ```
 npm install
 ```
-
+---
+I will improve the Deployment process of this project in the next few days.
