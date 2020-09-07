@@ -5,6 +5,10 @@ This is a hospital management based on the hyperledger fabric and IPFS
 - the SDK is using Node.js SDK
 - js-IPFS
 
+### request
+```node v10.19
+``` go >=1.13
+
 
 
 ### start up Network
