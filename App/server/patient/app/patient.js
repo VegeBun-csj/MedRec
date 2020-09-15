@@ -1,3 +1,4 @@
+
 var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
@@ -8,13 +9,23 @@ var crypto_rsa = require('../../Identity/crypto_rsa');
 var identity = require('../../Identity/identity_utils');
 var tx_op = require('../tx_chain/tx_op');
 var patientPay = require('../services/patientPay');
+
+
+const path = require('path');
+const fs = require('fs');
+const configpath= path.join(__dirname, '../../config.json');
+const configJson = fs.readFileSync(configpath,'utf-8');
+const config = JSON.parse(configJson);
+const password = config.dbpassword;
+const database = config.database;
+
+
 var connection = mysql.createConnection({
 	host: "localhost",
 	user: "root",
-	password: "louise",
-	database: "bishe2"
+	password: password,
+	database: database
 });
-
 
 	//侧面板
 	router.get('/info',function (req,res,next) {

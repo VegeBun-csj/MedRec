@@ -114,14 +114,14 @@ docker exec \
     -p "$RecordPACC_SRC_PATH" \
     -l "$CC_RUNTIME_LANGUAGE"
 
-echo "Instantiating smart contract recordpa on channelpa"
+echo "Instantiating smart contract recordpa on commonchannle"
 docker exec \
   -e CORE_PEER_LOCALMSPID=Org1MSP \
   -e CORE_PEER_MSPCONFIGPATH=${ORG1_MSPCONFIGPATH} \
   cli \
   peer chaincode instantiate \
     -o orderer.medrec.com:7050 \
-    -C channelpa \
+    -C commonchannel \
     -n recordpa \
     -l "$CC_RUNTIME_LANGUAGE" \
     -v 1.0 \

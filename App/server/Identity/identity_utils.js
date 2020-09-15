@@ -96,6 +96,7 @@ exports.registerUser= async(userName)=>{
 
 
 
+
   //检测是否存在该用户（用于注册过的用户进行登陆时的验证）,返回为boolen
 exports.checkUser=async(userName)=>{
     try {

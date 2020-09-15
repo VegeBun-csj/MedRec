@@ -12,22 +12,23 @@ const ccpPath = path.resolve(__dirname,'..','..','..',`../MedNet/${connection}`)
 const walletName = config.walletName;
 const ccpJSON = fs.readFileSync(ccpPath, 'utf8');
 const ccp = JSON.parse(ccpJSON);
-const walletPath = path.join(__dirname,'..','Identity',walletName);
+const walletPath = path.join(__dirname,'..','..','Identity',walletName);
 const wallet = new FileSystemWallet(walletPath);
 
 
-
-exports.invokeTx=async(username,channelName,chaincodeName,isquery,funcName,...args)=>{
+//使用的用户，通道名，链码名，是否查询，方法名，参数列表
+exports.invokeTx=async(username,chaincodeName,isquery,funcName,...args)=>{
     try {
         const gateway = new Gateway;
         const userExists = await wallet.exists(username);
+	console.log(`the user is exist ? :${userExists}`);
         if (!userExists) {
                 console.log(`An identity for the user ${username} does not exist in the wallet`);
-                console.log('Run the registerUser.js application before retrying');
+                console.log('please check the user existing before operating tx on the chain');
                 return;
         }
         await gateway.connect(ccp,{wallet,identity:username,discovery:gatewayDiscovery})
-        const network = await gateway.getNetwork(channelName);
+        const network = await gateway.getNetwork('commonchannel');
         const contract = await network.getContract(chaincodeName);
 
         console.log(`=======>>>>>>>> start Tx <<<<<<<===========`);

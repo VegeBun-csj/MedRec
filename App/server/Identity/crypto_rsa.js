@@ -1,7 +1,10 @@
 const NodeRSA = require('node-rsa')
-const fs = require('fs')
-
-
+const path = require('path');
+const fs = require('fs');
+const configpath= path.join(__dirname, '../config.json');
+const configJson = fs.readFileSync(configpath,'utf-8');
+const config = JSON.parse(configJson);
+const wallet = config.walletName;
 
 //生成rsa公私钥对(根据传入的用户，生成在当前的对应文件夹下面)
 exports.generator = async (username) => {
@@ -10,12 +13,12 @@ exports.generator = async (username) => {
         key.setOptions({ encryptionScheme: 'pkcs1' })
         let privatePem = key.exportKey('pkcs1-private-pem')
         let publicPem = key.exportKey('pkcs1-public-pem')	
-        if (!fs.existsSync(__dirname + `/wallet-Org1/${username}/public.pem`)) {
-            fs.writeFile(__dirname + `/wallet-Org1/${username}/public.pem`, publicPem, (err) => {
+        if (!fs.existsSync(__dirname + `/${wallet}/${username}/public.pem`)) {
+            fs.writeFile(__dirname + `/${wallet}/${username}/public.pem`, publicPem, (err) => {
                 if (err) throw err
                 console.log(`${username}的rsa公钥已保存！`)
             })
-            fs.writeFile(__dirname + `/wallet-Org1/${username}/private.pem`, privatePem, (err) => {
+            fs.writeFile(__dirname + `/${wallet}/${username}/private.pem`, privatePem, (err) => {
                 if (err) throw err
                 console.log(`${username}的rsa私钥已保存！`)
             })
@@ -33,7 +36,7 @@ exports.generator = async (username) => {
 
 //获取本地的公钥，用于一开始登陆时上传
 exports.getPubkey = async (username) => {
-    let publicKeyStr = fs.readFileSync(__dirname + `/wallet-Org1/${username}/public.pem`);
+    let publicKeyStr = fs.readFileSync(__dirname + `/${wallet}/${username}/public.pem`);
     //公钥
     return publicKeyStr.toString('utf-8');
 }
@@ -41,7 +44,7 @@ exports.getPubkey = async (username) => {
 
 //获取本地的私钥，用于解密从链上获取的明文数据
 exports.getPrikey = async (username) => {
-    let privateKeyStr = fs.readFileSync(__dirname + `/wallet-Org1/${username}/private.pem`);
+    let privateKeyStr = fs.readFileSync(__dirname + `/${wallet}/${username}/private.pem`);
     //私钥
     return privateKeyStr;
 }
@@ -61,7 +64,7 @@ exports.encrypt = async (publicKeyStr, msg) => {
 //传入的miwen必须是buffer类型的(也就是加密时返回的buffer类型的encryptStr)
 //    返回的是string类型的明文数据
 exports.decrypt = async (username, miwen) => {
-    let privateKeyStr = fs.readFileSync(__dirname + `/wallet-Org1/${username}/private.pem`, 'utf-8');
+    let privateKeyStr = fs.readFileSync(__dirname + `/${wallet}/${username}/private.pem`, 'utf-8');
     console.log(privateKeyStr);  
     let priKey  = new NodeRSA(privateKeyStr);
     let decryptStr = priKey.decrypt(miwen, 'utf8');

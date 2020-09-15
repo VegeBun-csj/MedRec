@@ -21,10 +21,10 @@ exports.invokeTx=async(username,chaincodeName,isquery,funcName,...args)=>{
     try {
         const gateway = new Gateway;
         const userExists = await wallet.exists(username);
-		console.log(userExists);
+	console.log(`the user is exist ? :${userExists}`);
         if (!userExists) {
                 console.log(`An identity for the user ${username} does not exist in the wallet`);
-                console.log('Run the registerUser.js application before retrying');
+                console.log('please check the user existing before operating tx on the chain');
                 return;
         }
         await gateway.connect(ccp,{wallet,identity:username,discovery:gatewayDiscovery})

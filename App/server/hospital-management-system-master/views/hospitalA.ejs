@@ -6,16 +6,14 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>登陆成功,欢迎使用医疗系统</h1>
+    <h1>欢迎使用病历上传系统</h1>
     <h1>开始上传就诊患者的病历</h1>
     <form action="/add_record" ref='uploadForm' 
       id='uploadForm' 
       method='post' 
       encType="multipart/form-data">
-        患者名 <input type="text" name="patient"> <br>
-        患者身份证号 <input type="text" name="idnum"> <br>
-      <!--   <input type="hidden" name="hospital" value="hospital1"> <br>-->
-        <!-- 此处还应有医生的用户名信息，但是通过cookie传到后台接受的 -->
+        患者用户名 <input type="text" name="patient"> <br>
+        患者医保卡号 <input type="text" name="idnum"> <br>
         <!-- 这里上传的文件选择之后，是到后台通过IPFS的接口进行上传的 -->
          请选择需要上传的病例文件 <input type="file" name="bili">  <br> 
         <!-- 请输入需要上传的数据 <input type="text" name="record"> -->

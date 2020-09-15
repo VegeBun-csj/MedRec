@@ -9,12 +9,23 @@ var identity = require('../../Identity/identity_utils');
 var tx_op = require('../tx_chain/tx_op');
 var mysql = require('mysql');
 var bodyParser = require('body-parser');
-	var CryptoJS = require("crypto-js");
+var CryptoJS = require("crypto-js");
+
+
+const path = require('path');
+const fs = require('fs');
+const configpath= path.join(__dirname, '../../config.json');
+const configJson = fs.readFileSync(configpath,'utf-8');
+const config = JSON.parse(configJson);
+const password = config.dbpassword;
+const database = config.database;
+
+
 var connection = mysql.createConnection({
 	host: "localhost",
 	user: "root",
-	password: "louise",
-	database: "bishe2"
+	password: password,
+	database: database
 });
 
 router.get('/',function(req,res)
@@ -137,9 +148,6 @@ router.post('/register', async function (req, res) {
 					console.log(err);
 				
 				}
-      
-				/*res.json(success);
-				return;*/
 				res.render('login.ejs');
 				});
 			   

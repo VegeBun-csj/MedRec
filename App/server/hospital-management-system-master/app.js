@@ -16,36 +16,10 @@ var formidable = require('formidable');
 const officegen = require('officegen');
 const docx = officegen ('docx');
 const fs    = require('fs');
+const publicpath = path.join(__dirname,'..','public');
 
-//var moment = require("moment");
-
-
-
-//docx.on ('finalize', function (written) {
-//    console.log ('Finish to create Word file.\nTotal bytes created: ' + written + '\n');
-//});
-//docx.on ('error', function (err) {
-//    console.log(err);
-//});
-//var textarr=['第1行','第2行','第3行','第4行'];
-//for(var j=0;j<textarr.length;j++){
-//    var pcontent=textarr[j];
- //   var pObj = docx.createP();
- //   pObj.addText (pcontent, { font_face: 'Arial', font_size: 14 });
-//}
-//var out = fs.createWriteStream ('./test.docx');
-//out.on ('error', function (err) {
-//    res.send(err);
-//});
-//docx.generate (out);
-
-
-// configuration ===============================================================
-// connect to our database
 
 require('./config/passport')(passport); // pass passport for configuration
-
-
 
 // set up our express application
 app.use(morgan('dev')); // log every request to the console
@@ -54,8 +28,8 @@ app.use(bodyParser.urlencoded({
 	extended: true
 }));
 app.use(bodyParser.json());
-app.use('/',express.static('/home/songjian/go/src/github.com/hyperledger/MedRec/App/server/public/'));
-app.use(favicon(path.join('/home/songjian/go/src/github.com/hyperledger/MedRec/App/server/public/', 'hosp', 'favicon.ico')));
+app.use('/',express.static(publicpath));
+app.use(favicon(path.join(publicpath, 'hosp', 'favicon.ico')));
 
 
 app.set('view engine', 'ejs'); // set up ejs for templating
@@ -78,5 +52,5 @@ require('./app/routes.js')(app, passport); // load our routes and pass in our ap
 // launch ======================================================================
 //Setting server port
 app.listen(3000, function () {
-	console.log("Server has started!!!");
+	console.log("Server has started at 3000 port !!!");
 });

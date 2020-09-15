@@ -18,7 +18,6 @@ var mysql = require('mysql');
 var officegen = require('officegen');
 var multer = require('multer');
 var upload = multer({dest:'uploads/'})
-var fs = require('fs');
 var docx = officegen('docx');//word
 
 var crypto_rsa = require('../../Identity/crypto_rsa');
@@ -27,6 +26,15 @@ var tx_op = require('../tx_chain/tx_op');
 var ipfs = require('../../ipfs/ipfs_op');
 var fileUpload = require('express-fileupload');
 
+
+const path = require('path');
+const fs = require('fs');
+const configpath= path.join(__dirname, '../../config.json');
+const configJson = fs.readFileSync(configpath,'utf-8');
+const config = JSON.parse(configJson);
+const password = config.dbpassword;
+const database = config.database;
+const publicpath = path.join(__dirname,'..','..','public');
 
 var mmedicine = null;
 var hospitaluser =null;
@@ -40,8 +48,8 @@ global.orderid=1;
 var connection = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "louise",
-  database: "bishe2"
+  password: password,
+  database: database
 });
 
 module.exports = function(app, passport) {
@@ -55,13 +63,9 @@ module.exports = function(app, passport) {
 	
 	app.use(fileUpload({
     useTempFiles : true,
-    tempFileDir : '/home/songjian/go/src/github.com/hyperledger/MedRec/App/server/public/medicinePIc'
+    tempFileDir : publicpath + 'medicinePIc'
 	}));
     app.get('/patient', function(req, res) {
-        //connection.query('select * from bingren where tijian=2', function (err, rows) {
-        //    //console.log(rows);
-        //    res.render('id_prescription',{test:'patientlist' ,patient: rows} );
-        //})
         if(req.user.user_type == 'hospital2'){
             hid = 2;
         }
@@ -91,26 +95,7 @@ module.exports = function(app, passport) {
                 }
             });
         }
-		//在首页运行时进行读取数据操作：patient表中patientid--->插入bingren表
-		//var paientid;
-		//connection.query("select * from patient",function (err,reslut) {
-		//	reslut.forEach(function (row) {
-		//		patientid = row.patientid;
-        //        console.log(patientid);
-		//		connection.query("select * from bingren where id=?",row.patientid,function(err,bingrenrows){
-		//			if(bingrenrows[0]==null)
-		//			{
-		//				connection.query("insert into bingren (id) values(?)",row.patientid,function(err,rows){
-        //                if (err) {
-        //                    res.end('修改失败：' + err);
-        //                } else {
-        //                	//console.log(patientid);
-        //                }
-		//			})
-		//			}
-        //        })
-		//	})
-        //});
+
         res.render('index.ejs');
 	});
 
@@ -141,12 +126,6 @@ module.exports = function(app, passport) {
 
 
 
-	// =====================================
-	// PROFILE SECTION =========================
-	// =====================================
-	// we will want this protected so you have to be logged in to visit
-	// we will use route middleware to verify this (the isLoggedIn function)
-    //其实这个没什么用，因为两个index调成一样了。
 	app.get('/profile', isLoggedIn, function(req, res) {
 
 		var yu_e;
@@ -184,7 +163,7 @@ module.exports = function(app, passport) {
 	});
 
 
-	//11111111111111111111111111111111111111111111111111
+
 	app.get('/watchthirdbinli',isLoggedIn,function(req,res)
 	{
 	    res.render('thirdselect',{hospital:req.user.user_type});	
@@ -192,7 +171,6 @@ module.exports = function(app, passport) {
 
 	})
 	
-	//22222222222222222222222222222222222222222222222222	
 	app.post('/thirdsele',isLoggedIn, async function(req,res)
 	{
 		  console.log(`进入第三方医院登陆界面`);
@@ -229,11 +207,6 @@ module.exports = function(app, passport) {
 
 
 	})	
-
-
-
-
-
 
 	//药房列表 显示medicine表
     app.get('/medicine', isLoggedIn, function(req, res){
@@ -333,17 +306,13 @@ module.exports = function(app, passport) {
             m_wenhao: req.body.m_wenhao, m_chengfen: req.body.m_chengfen};
             res.redirect('/medicine');
     })
-	// =====================================
-	// LOGOUT ==============================
-	// =====================================
+
 	app.get('/logout', function(req, res) {
 		req.logout();
 		res.redirect('/');
 	});
 
-	// =====================================
-	// Forms for User Staff ================
-	// =====================================
+
 	//护士挂号页面（登记。先登记才能体检和门诊）（医疗端独立功能）
 	app.get('/guahao',function (req,res) {
         connection.query('select * from patient left join bingren on patient.pid=bingren.id where bingren.id is NULL', function (err, rows) {
@@ -367,20 +336,6 @@ module.exports = function(app, passport) {
             //console.log(rows);
             res.render('admitpatient',{test:'patientlist' ,patient: rows} );
         })
-        //connection.query('select * from bingren where tijian = 1', function (err, rows) {
-        //    //console.log(rows);
-        //    res.render('admitpatient',{test:'patientlist' ,patient: rows} );
-        //})
-
-        //var user = {username: req.body.username,password: req.body.password, user_type: "Patient"};
-        //connection.query("INSERT INTO pre_user SET ?", user, function (err,res) {
-        //	if (err) throw err;
-        //	connection.query("SELECT * FROM user WHERE username = ? ",user.username, function(err, row){
-        //		if(err) throw err;
-        //		pid = row[0].id;
-        //	});
-        //});
-        //res.render('system_entry_form_patient_table.ejs');
     })
 
 	//完成体检后跳转（将体检完成flag存入/tijianwancheng路由中）（医疗端独立功能）
@@ -406,15 +361,6 @@ module.exports = function(app, passport) {
     })
 	//完成诊断后跳转（将体检完成flag存入/chongxintijian路由中）（医疗端独立功能）
     app.post('/chongxintijian', function(req, res){
-        //var tijian = req.body.tijian;
-        //var diagnosis = req.body.diagnosis;
-        //connection.query("update bingren set tijian='" + tijian + "',diagnosis='"+ diagnosis +"' where id=" + pid, function (err, rows) {
-        //    if (err) {
-        //        res.end('修改失败：' + err);
-        //    } else {
-        //        res.redirect('/chongxintijian');
-        //    }
-        //});
         var symptomId = req.body.symptomId;
         connection.query("update relationship set symptomId='" + symptomId + "' where rid=" + rid, function (err, rows) {
             if (err) {
@@ -1058,7 +1004,7 @@ module.exports = function(app, passport) {
 		var hid;
         if (hosptial ==1){
 			hid = 1;
-            hhname = '淮安市第一人民医院';
+            hhname = '第一人民医院';
             uuserid = 10002;
             newuser = {username: hhname,password: password, user_type: "hospital1",id:10002};
 
@@ -1098,7 +1044,7 @@ module.exports = function(app, passport) {
 
         }
         if (hosptial ==2){
-            hhname = '淮安市第二人民医院';
+            hhname = '第二人民医院';
             uuserid = 10003;
 			hid = 2;
             newuser = {username: hhname,password: password, user_type: "hospital2",id:10003};
@@ -1458,8 +1404,7 @@ module.exports = function(app, passport) {
 	
 	*/	
     app.post('/add_record',async function(req, res){
-        console.log(`开始上传雷神山医院A的病人的病历`);
-        //var req = req.request.body;
+        console.log(`开始上传病人的病历`);
         var patient = req.body.patient;
         var idnum = req.body.idnum;
         var hospital ;
