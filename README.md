@@ -20,7 +20,7 @@
 
 如果你是在Windows上搭建的虚拟机环境，可以像我下面一样，使用Navicat远程连接到虚拟机，将上面sql文件导入虚拟机的Mysql数据库中
 
-![image-20200909134016816](C:\Users\Bun\AppData\Roaming\Typora\typora-user-images\image-20200909134016816.png)
+![image-20200909134016816](C://Users//Bun//AppData//Roaming//Typora//typora-user-images//image-20200909134016816.png)
 
  下面是导入之后的数据库的表：
 
