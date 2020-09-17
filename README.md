@@ -196,6 +196,8 @@
 
 #### 3.启动Node.js后端，包括医院，病人
 
+> 启动后端之前请修改server目录中的**config.json**文件中的**database**和**dbpassword**字段为自己的数据库和密码
+
 ##### （1）进入指定目录启动病人服务端：
 
  ![image-20200912141132896](https://cdn.jsdelivr.net/gh/VegeBun-csj/Images/image-20200912141132896.png)
