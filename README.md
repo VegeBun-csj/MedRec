@@ -18,13 +18,13 @@
 
 （2）在ubuntu上安装**Mysql**，版本是**5.7.31**，按照网上教程安装即可。
 
-（3）在MedRec的目录中找到database目录中的**MedRecord.sql**文件(这是项目中需要使用的本地数据库的文件)。将该文件导入到Ubuntu中的mysql数据库中。
+（3）在MedRec的目录中找到database目录中的**MedRecord.sql**文件(这是项目中需要使用的本地数据库的文件)。将该文件导入到Ubuntu中的mysql数据库中。（我此处新建的**数据库名是MedRec**）
 
 如果你是在Windows上搭建的虚拟机环境，可以像我下面一样，使用Navicat远程连接到虚拟机，将上面sql文件导入虚拟机的Mysql数据库中
 
 ![image-20200909134016816](https://cdn.jsdelivr.net/gh/VegeBun-csj/Images/image-20200909134016816.png)
 
- 下面是导入之后的数据库的表：
+ 下面是导入之后的数据库**MedRec**的表：
 
 ![image-20200909134031322](https://cdn.jsdelivr.net/gh/VegeBun-csj/Images/image-20200909134031322.png)
 
@@ -196,7 +196,7 @@
 
 #### 3.启动Node.js后端，包括医院，病人
 
-> 启动后端之前请修改server目录中的**config.json**文件中的**database**和**dbpassword**字段为自己的数据库和密码
+> 启动后端之前请修改server目录中的**config.json**文件中的**database**和**dbpassword**字段为自己的数据库和密码（我这里新建的数据库名是MedRec，密码是csj123zxc，所以只需要修改为你自己的数据库名和密码即可）
 
 ##### （1）进入指定目录启动病人服务端：
 
